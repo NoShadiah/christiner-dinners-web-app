@@ -27,7 +27,7 @@ class User(db.Model):
   food_items = db.relationship("FoodItem", backref="user")
   menu_items = db.relationship("MenuItem", backref="user")
   gallery = db.relationship("Gallery", backref="user")
-  # orders = db.relationship("Order",  backref="user")
+  orders = db.relationship("Order",  backref="user")
 
 
   def __init__(self, first_name, last_name, email,contact,user_type,password):

@@ -6,7 +6,7 @@ from models.food_categories.model import FoodCategory
 from models.menu.model import MenuItem
 from models.gallery.model import GalleryItem
 from models.food_items.model import FoodItem
-# from models.orders.model import Order
+from models.orders.model import Order
 from flask_jwt_extended import JWTManager
 
 app = create_app('development')
@@ -22,6 +22,6 @@ def make_shell_context():
                MenuItem=MenuItem, 
                # Settings=Settings, 
                FoodItem=FoodItem,
-               GalleryItem = GalleryItem
-               # Order=Order
+               GalleryItem = GalleryItem,
+               Order=Order
                )
