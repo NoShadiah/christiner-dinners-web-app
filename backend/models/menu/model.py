@@ -7,12 +7,12 @@ class MenuItem(db.Model):
     id:int
     name:str
     description:str
-    Image:str
+    image:str
     price_unit:str
     price:str
     served_at:str
     
-    __table__ = "Menu"
+    __tablename__ = "Menu"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
     description = db.Column(db.String(255))
