@@ -24,9 +24,9 @@ class User(db.Model):
   updated_at = db.Column(db.String(255),nullable=True, onupdate=datetime.now())
   
   food_categories = db.relationship("FoodCategory",backref="user")
-  # food_items = db.relationship("FoodItem", backref="user")
+  food_items = db.relationship("FoodItem", backref="user")
   # menu_items = db.relationship("MenuItem", backref="user")
-  # gallery = db.relationship("Gallery", backref="user")
+  gallery = db.relationship("Gallery", backref="user")
   # orders = db.relationship("Order",  backref="user")
 
 

@@ -30,19 +30,19 @@ def create_app(config_name):
     from models.users.controller import users
     
     from models.food_categories.controller import foodcategories
-    # from models.gallery.controller import gallery
+    from models.gallery.controller import gallery
     # from models.menu.controller import menu
-    # from models.settings.controller import settingss
-    # from models.food_items.controller import food_items
+    # from models.settings.controller import settings
+    from models.food_items.controller import fooditems
     # from models.orders.controller import orders
 
     #registering blueprints    
     app.register_blueprint(users)
     app.register_blueprint(foodcategories)
-    # app.register_blueprint(gallery)
+    app.register_blueprint(gallery)
     # app.register_blueprint(menu)
     # app.register_blueprint(settings)
-    # app.register_blueprint(food_items)
+    app.register_blueprint(fooditems)
     # app.register_blueprint(orders)
 
    
