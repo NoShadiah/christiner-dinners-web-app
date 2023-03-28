@@ -1,13 +1,13 @@
 from models.db import db
-from models.food_categories.model import FoodCategory
+from models.food_items.model import FoodItem
 from models.users.model import User
 from flasgger import swag_from
 from flask import  jsonify, request, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-foodcategories = Blueprint("foodcategories", __name__, url_prefix="/api/v2/foodcategories")
+fooditems = Blueprint("fooditems", __name__, url_prefix="/api/v2/fooditems")
 
-@foodcategories.route("/all", methods=["GET"])
+@fooditems.route("/all", methods=["GET"])
 @jwt_required()
 def get_all():
     user_logged_in=get_jwt_identity()
@@ -16,22 +16,22 @@ def get_all():
     if userType != "sper admin":
         return {"message":"Sorry access denied"}
     else:
-        categories = FoodCategory.query.all()
+        items = FoodItem.query.all()
         response = [{
-            "name":category.name,
-            "image":category.image,
-            "description":category .description
-    } for category in categories]
-        return {"total":len(categories), "data":response}
+            "name":item.name,
+            "image":item.image,
+            "description":item .description
+    } for item in items]
+        return {"total":len(items), "data":response}
 
-@foodcategories.route("/catgory/<id>", methods=['POST'])
+@fooditems.route("/catgory/<id>", methods=['POST'])
 @jwt_required()
-def specific_category(id):
+def specific_item(id):
     # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "super admin":
+    if userType != "sper admin":
         return {"message":"Sorry access denied"}
     else:            
             def register():
@@ -42,40 +42,40 @@ def specific_category(id):
                 if not name or image or description:
                     return {"message":"All fields are required"}
                 
-                new_category = FoodCategory(name=name, image=image, description=description, registered_by=registered_by)
-                db.session.add(new_category)
+                new_item = FoodItem(name=name, image=image, description=description, registered_by=registered_by)
+                db.session.add(new_item)
                 db.session.commit()
-                return {"message":"successfully added a new food category", "data": new_category}
+                return {"message":"successfully added a new food item", "data": new_item}
             
             return register()
     
-@foodcategories.route("/category/<id>", methods=["GET", "PUT", "DELETE"])
+@fooditems.route("/item/<id>", methods=["GET", "PUT", "DELETE"])
 @jwt_required()
-def single_category(id):
+def single_item(id):
      # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "super admin":
+    if userType != "sper admin":
         return {"message":"Sorry access denied"}
     
     else:
-        category = FoodCategory.query.get_or_404(id)
+        item = FoodItem.query.get_or_404(id)
         if request.method == "GET":
                 
-                return {"messgae":f"You successfully retrieved category {id}", "details":category}
+                return {"messgae":f"You successfully retrieved item {id}", "details":item}
         elif request.method == "PUT":
-                category.name = request.json["name"]
-                category.image = request.json["image"]
-                category.description = request.json["description"]
+                item.name = request.json["name"]
+                item.image = request.json["image"]
+                item.description = request.json["description"]
                  
-                db.session.add(category)
+                db.session.add(item)
                 db.session.commit()
 
         elif request.method == "DELETE":
-             db.session.delete(category)
+             db.session.delete(item)
              db.session.commit()
-             return {"message":f"You successfully deleted {category.name}"}
+             return {"message":f"You successfully deleted {item.name}"}
         
 
 
