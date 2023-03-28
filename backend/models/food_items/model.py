@@ -17,6 +17,7 @@ class FoodItem(db.Model):
     name = db.Column(db.String(100))
     image = db.Column(db.String(200))
     description = db.Column(db.String(250))
+    in_category = db.Column(db.Integer, db.ForeignKey('Food_Categories.id'))
     registered_by = db.Column(db.Integer, db.ForeignKey('users.id'))
     registered_at = db.Column(db.String(250), default=datetime.now())
     updated_at = db.Column(db.String(250), onupdate=datetime.now())

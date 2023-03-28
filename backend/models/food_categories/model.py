@@ -21,5 +21,7 @@ class FoodCategory(db.Model):
     registered_at = db.Column(db.String(250), default=datetime.now())
     updated_at = db.Column(db.String(250), onupdate=datetime.now())
 
+    food_items = db.relationship("FoodItem", backref="foodcategory")
+
     def __repr__():
         return(f"<Category>..............{FoodCategory.name}")
