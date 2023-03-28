@@ -28,8 +28,8 @@ def create_app(config_name):
     Swagger(app, config=swagger_config, template=template)
 
     from models.users.controller import users
-    # from models.categories.controller import categories
-    # from models.food_categories.controller import food_categories
+    
+    from models.food_categories.controller import foodcategories
     # from models.gallery.controller import gallery
     # from models.menu.controller import menu
     # from models.settings.controller import settingss
@@ -38,7 +38,7 @@ def create_app(config_name):
 
     #registering blueprints    
     app.register_blueprint(users)
-    # app.register_blueprint(food_categories)
+    app.register_blueprint(foodcategories)
     # app.register_blueprint(gallery)
     # app.register_blueprint(menu)
     # app.register_blueprint(settings)

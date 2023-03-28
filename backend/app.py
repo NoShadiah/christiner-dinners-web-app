@@ -1,7 +1,7 @@
 from models import create_app, db
 from flask_migrate import Migrate
 from models.users.model import User
-# from models.food_categories.model import FoodCategroy 
+from models.food_categories.model import FoodCategory 
 # from models.settings.model import Settings
 # from models.menu.model import MenuItem
 # from models.gallery.model import Gallery
@@ -18,7 +18,7 @@ migrate = Migrate(app, db)
 def make_shell_context():
    return dict(db=db, 
                User=User, 
-               # FoodCategroy=FoodCategroy, 
+               FoodCategory=FoodCategory, 
                 
                # MenuItem=MenuItem, 
                # Category=Category, 
