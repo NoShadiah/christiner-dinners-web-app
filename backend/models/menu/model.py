@@ -18,7 +18,7 @@ class MenuItem(db.Model):
     description = db.Column(db.String(255))
     image = db.Column(db.String(255))
     served_at = db.Column(db.String(255))
-    category_id = db.Column(db.Integer)
+    category_id = db.Column(db.Integer, db.ForeignKey('Food_Categories.id'))
     price_unit = db.Column(db.String(3))
     price = db.Column(db.Integer)
     reg_at = db.Column(db.DateTime, default = datetime.now())

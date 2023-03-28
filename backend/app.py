@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 from models.users.model import User
 from models.food_categories.model import FoodCategory 
 # from models.settings.model import Settings
-# from models.menu.model import MenuItem
+from models.menu.model import MenuItem
 from models.gallery.model import GalleryItem
 from models.food_items.model import FoodItem
 # from models.orders.model import Order
@@ -19,7 +19,7 @@ def make_shell_context():
                User=User, 
                FoodCategory=FoodCategory, 
                 
-               # MenuItem=MenuItem, 
+               MenuItem=MenuItem, 
                # Settings=Settings, 
                FoodItem=FoodItem,
                GalleryItem = GalleryItem
