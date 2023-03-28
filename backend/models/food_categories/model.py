@@ -18,8 +18,8 @@ class FoodCategory(db.Model):
     image = db.Column(db.String(200))
     description = db.Column(db.String(250))
     registered_by = db.Column(db.Integer, db.ForeignKey('users.id'))
-    registered_at = db.Column(db.String(250), default=datetime.now())
-    updated_at = db.Column(db.String(250), onupdate=datetime.now())
+    registered_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.now())
 
     food_items = db.relationship("FoodItem", backref="foodcategory")
 

@@ -20,8 +20,8 @@ class User(db.Model):
   contact = db.Column(db.String(200))
   user_type = db.Column(db.String(100),default="client")
   password = db.Column(db.String(10))
-  registered_at = db.Column(db.String(255),nullable=True, default=datetime.now())
-  updated_at = db.Column(db.String(255),nullable=True, onupdate=datetime.now())
+  registered_at = db.Column(db.DateTime,nullable=True, default=datetime.now())
+  updated_at = db.Column(db.DateTime,nullable=True, onupdate=datetime.now())
   
   food_categories = db.relationship("FoodCategory",backref="user")
   food_items = db.relationship("FoodItem", backref="user")
