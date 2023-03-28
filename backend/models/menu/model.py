@@ -21,6 +21,7 @@ class MenuItem(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('Food_Categories.id'))
     price_unit = db.Column(db.String(3))
     price = db.Column(db.Integer)
+    upd_by = db.Column(db.String(50))
     reg_at = db.Column(db.DateTime, default = datetime.now())
     upd_at = db.Column(db.DateTime, onupdate = datetime.now())
 
