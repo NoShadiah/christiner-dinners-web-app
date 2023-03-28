@@ -68,9 +68,14 @@ def single_item(id):
                 item.name = request.json["name"]
                 item.image = request.json["image"]
                 item.description = request.json["description"]
+                
+                if not item.name or item.image or item.decription:
+                     return {"message":"All fields required"}
+                else:
                  
-                db.session.add(item)
-                db.session.commit()
+                    db.session.add(item)
+                    db.session.commit()
+                    return {"message":f"You successfully updated food item {item.id}"}
 
         elif request.method == "DELETE":
              db.session.delete(item)

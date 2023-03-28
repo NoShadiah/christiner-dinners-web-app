@@ -69,9 +69,14 @@ def single_category(id):
                 category.image = request.json["image"]
                 category.description = request.json["description"]
                  
-                db.session.add(category)
-                db.session.commit()
-
+                if not category.name or category.image or category.decription:
+                     return {"message":"All fields required"}
+                else:
+                 
+                    db.session.add(category)
+                    db.session.commit()
+                    return {"message":f"You successfully updated food category {category.id}"}
+                
         elif request.method == "DELETE":
              db.session.delete(category)
              db.session.commit()
@@ -79,4 +84,4 @@ def single_category(id):
         
 
 
-        
+

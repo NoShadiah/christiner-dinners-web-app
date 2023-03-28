@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class FoodCategory(db.Model):
+class GalleryItem(db.Model):
     id:int
     name:str
     image:str
@@ -12,7 +12,7 @@ class FoodCategory(db.Model):
     registered_at:str
     
 
-    __tablename__ = "Food_Categories"
+    __tablename__ = "Gallery"
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100))
     image = db.Column(db.String(200))
@@ -22,4 +22,4 @@ class FoodCategory(db.Model):
     updated_at = db.Column(db.String(250), onupdate=datetime.now())
 
     def __repr__():
-        return(f"<Category>..............{FoodCategory.name}")
+        return(f"<Category>..............{GalleryItem.name}")
