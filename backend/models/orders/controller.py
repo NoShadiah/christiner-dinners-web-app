@@ -58,8 +58,9 @@ def specific_order():
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
+    
     if userType != "client":
-        return {"message":"Sorry only registered CLIENTS can make orders, create an account or login"}
+        return {"message":"Sorry only registered CLIENTS can make orders, create an account as a client"}
     else:            
             def register():
                 made_by = user_logged_in
@@ -91,6 +92,9 @@ def single_order(id):
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
+    user_fname = check_user_details.first_name
+    user_lname = check_user_details.last_name
+    user_name = user_fname + " " + user_lname
     if userType != "super admin" or userType != "admin":
         return {"message":"Sorry access denied"}
     
@@ -101,6 +105,7 @@ def single_order(id):
                 return {"messgae":f"You successfully retrieved order {id}", "details":order}
         elif request.method == "PUT":
                 order.status = request.json["status"]
+                order.updated_by = user_name
                 
                  
                 if not order.status:
