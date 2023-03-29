@@ -26,13 +26,13 @@ def specific_gallery_item(id):
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "sper admin":
+    if userType == "client":
         return {"message":"Sorry access denied"}
     else:            
             def register():
-                name = request.json("name")
-                image = request.json("image")
-                description = request.json("description")
+                name = request.json["name"]
+                image = request.json["image"]
+                description = request.json["description"]
                 registered_by =user_logged_in
                 if not name or image or description:
                     return {"message":"All fields are required"}

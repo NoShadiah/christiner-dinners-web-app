@@ -35,9 +35,9 @@ def specific_category(id):
         return {"message":"Sorry access denied"}
     else:            
             def register():
-                name = request.json("name")
-                image = request.json("image")
-                description = request.json("description")
+                name = request.json["name"]
+                image = request.json["image"]
+                description = request.json["description"]
                 registered_by =user_logged_in
                 if not name or image or description:
                     return {"message":"All fields are required"}
