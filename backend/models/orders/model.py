@@ -8,7 +8,7 @@ class Order(db.Model):
     made_by:str
     menu_item:str
     quantity:str
-    delivery_mode:str
+    # delivery_mode:str
     delivery_address:str
     made_at:str
     needed_by:str
@@ -19,7 +19,7 @@ class Order(db.Model):
     made_by = db.Column(db.String(250), db.ForeignKey('users.id'))
     menu_item = db.Column(db.Integer, db.ForeignKey('Menu.id'))
     quantity = db.Column(db.Integer)
-    delivery_mode = db.Column(db.String(10)) 
+    # delivery_mode = db.Column(db.String(10)) 
     delivery_address = db.Column(db.String(255))
     made_at = db.Column(db.DateTime, default = datetime.now())
     needed_by = db.Column(db.String(7))

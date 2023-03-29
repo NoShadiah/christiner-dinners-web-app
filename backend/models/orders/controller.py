@@ -36,18 +36,21 @@ def specific_order(id):
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "super admin":
-        return {"message":"Sorry access denied"}
+    if userType != "cuctomer":
+        return {"message":"Sorry only registered CLIENTS can make orders"}
     else:            
             def register():
-                made_by = request.json("made_by")
-                menu_item = request.json("menu_item")
-                quantity = request.json("quantity")
-                registered_by =user_logged_in
+                made_by = user_logged_in
+                menu_item = request.json["menu_item"]
+                quantity = request.json["quantity"]
+                delivery_address = request.json["delivery_address"]
+                needed_by = request.json["needed_by"]
+
+                
                 if not made_by or menu_item or quantity:
                     return {"message":"All fields are required"}
                 
-                new_order = Order(made_by=made_by, menu_item=menu_item, quantity=quantity, registered_by=registered_by)
+                new_order = Order(made_by=made_by, menu_item=menu_item, quantity=quantity, delivery_address=delivery_address)
                 db.session.add(new_order)
                 db.session.commit()
                 return {"message":"successfully added a new food order", "data": new_order}
