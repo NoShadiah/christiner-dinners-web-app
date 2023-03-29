@@ -25,7 +25,7 @@ class Order(db.Model):
     needed_by = db.Column(db.String(7))
     status = db.Column(db.String(9))
     updated_at = db.Column(db.DateTime, onupdate=datetime.now())
-    updated_by = db.column(db.String(50), nullable = True)
+    updated_by = db.Column(db.String(50))
 
     def __repr__():
         return f"Menu item number, {Order.menu}"

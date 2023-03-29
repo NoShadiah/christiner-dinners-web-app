@@ -78,7 +78,7 @@ def specific_order():
                                   quantity=quantity, 
                                   delivery_address=delivery_address, 
                                   needed_by=needed_by, 
-                                  status =status)
+                                  status = status)
                 db.session.add(new_order)
                 db.session.commit()
                 return {"message":"successfully made a new food order, thank you, your order will delivered as needed", "data": new_order}
