@@ -28,18 +28,19 @@ class User(db.Model):
   
   food_categories = db.relationship("FoodCategory",backref="user")
   food_items = db.relationship("FoodItem", backref="user")
-  menu_items = db.relationship("MenuItem", backref="user")
-  gallery = db.relationship("Gallery", backref="user")
+#   menu = db.relationship("MenuItem", backref="user")
+  gallery = db.relationship("GalleryItem", backref="user")
   orders = db.relationship("Order",  backref="user")
 
 
-  def __init__(self, first_name, last_name, email,contact,user_type,password):
+  def __init__(self, first_name, last_name, email,contact,user_type,password, gender):
    self.first_name = first_name
    self.last_name = last_name
    self.email = email
    self.contact = contact
    self.user_type = user_type
    self.password = password
+   self.gender = gender
    
 
   

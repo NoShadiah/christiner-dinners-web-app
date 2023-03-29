@@ -13,18 +13,18 @@ def get_all():
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "sper admin":
-        return {"message":"Sorry access denied"}
-    else:
-        menuitems = MenuItem.query.all()
-        response = [{
+    # if userType != "sper admin":
+    #     return {"message":"Sorry access denied"}
+    # else:
+    menuitems = MenuItem.query.all()
+    response = [{
             "name":item.name,
             "image":item.image,
             "description":item .description
     } for item in menuitems]
-        return {"total":len(menuitems), "data":response}
+    return {"total":len(menuitems), "data":response}
 
-@menu.route("/catgory/<id>", methods=['POST'])
+@menu.route("/register", methods=['POST'])
 @jwt_required()
 def specific_item(id):
     # checking the user type

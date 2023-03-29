@@ -35,8 +35,8 @@ def get_all():
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "sper admin":
-        return {"message":"Sorry access denied"}
+    if userType == "client" or userType == "customer":
+        return {"message":"Sorry but access denied, you are unauthorized"}
     
     orders = Order.query.all()
     response = [{
@@ -51,7 +51,7 @@ def get_all():
     return {"total":len(orders), "data":response}
  
 
-@orders.route("/catgory", methods=['POST'])
+@orders.route("/order", methods=['POST'])
 @jwt_required()
 def specific_order():
     # checking the user type
@@ -91,7 +91,7 @@ def single_order(id):
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "super admin":
+    if userType != "super admin" or userType != "admin":
         return {"message":"Sorry access denied"}
     
     else:
@@ -109,7 +109,7 @@ def single_order(id):
                  
                     db.session.add(order)
                     db.session.commit()
-                    return {"message":f"You successfully updated food order {order.id}"}
+                    return {"message":f"You successfully updated the status of order {order.id}"}
                 
         elif request.method == "DELETE":
              db.session.delete(order)

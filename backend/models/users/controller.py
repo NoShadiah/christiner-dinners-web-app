@@ -57,6 +57,7 @@ def create_user():
     user_contact =request.json['contact']  
     user_password = request.json['password']
     user_user_type=request.json['user_type']
+    user_gender = request.json['gender']
     password_hash = generate_password_hash(user_password)
   
 
@@ -77,6 +78,8 @@ def create_user():
     
     if not user_password:
         return jsonify({'Message':"Password is required"}),400
+    if not user_gender:
+        return {"message":"Your gender is required, either male or female"}
     if  not user_user_type:
         default = "client"
         user_user_type = default
@@ -104,7 +107,8 @@ def create_user():
                     email = user_email,
                     contact = user_contact,
                     password=password_hash,
-                     user_type=user_user_type)
+                     user_type=user_user_type,
+                     gender=user_gender)
     #  address = user_address,
     
 
