@@ -11,6 +11,7 @@ class User(db.Model):
   last_name: str
   email: str
   contact: str
+  address:str
   user_type: str
 
   id = db.Column(db.Integer, primary_key = True)
@@ -18,6 +19,7 @@ class User(db.Model):
   last_name = db.Column(db.String(100),nullable=False)
   email = db.Column(db.String(50))  
   contact = db.Column(db.String(200))
+  address = db.Column(db.String(200))
   user_type = db.Column(db.String(100),default="client")
   password = db.Column(db.String(10))
   registered_at = db.Column(db.DateTime,nullable=True, default=datetime.now())
