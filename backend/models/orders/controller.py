@@ -51,7 +51,7 @@ def get_all():
     return {"total":len(orders), "data":response}
  
 
-@orders.route("/order", methods=['POST'])
+@orders.route("/make_order", methods=['POST'])
 @jwt_required()
 def specific_order():
     # checking the user type
@@ -60,7 +60,7 @@ def specific_order():
     userType = check_user_details.user_type
     
     if userType != "client":
-        return {"message":"Sorry only registered CLIENTS can make orders, create an account as a client"}
+        return {"message":"Sorry only registered CLIENTS can make orders, kindly create an account"}
     else:            
             def register():
                 made_by = user_logged_in
@@ -81,7 +81,7 @@ def specific_order():
                                   status = status)
                 db.session.add(new_order)
                 db.session.commit()
-                return {"message":"successfully made a new food order, thank you, your order will delivered as needed", "data": new_order}
+                return {"message":"successfully made a new food order, thank you, your order will delivered as as specified", "data": new_order}
             
             return register()
     
@@ -95,7 +95,7 @@ def single_order(id):
     user_fname = check_user_details.first_name
     user_lname = check_user_details.last_name
     user_name = user_fname + " " + user_lname
-    if userType != "super admin" or userType != "admin":
+    if userType == "client":
         return {"message":"Sorry access denied"}
     
     else:
