@@ -31,10 +31,10 @@ def create_app(config_name):
     
     from models.food_categories.controller import foodcategories
     from models.gallery.controller import gallery
-    # from models.menu.controller import menu
+    from models.menu.controller import menu
     # from models.settings.controller import settings
     from models.food_items.controller import fooditems
-    # from models.orders.controller import orders
+    from models.orders.controller import orders
 
     #registering blueprints    
     app.register_blueprint(users)
