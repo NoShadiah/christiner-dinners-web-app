@@ -17,6 +17,7 @@ class User(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   first_name = db.Column(db.String(100),nullable=False)
   last_name = db.Column(db.String(100),nullable=False)
+  gender = db.Column(db.String(6))
   email = db.Column(db.String(50))  
   contact = db.Column(db.String(200))
   address = db.Column(db.String(200))

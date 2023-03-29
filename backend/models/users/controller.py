@@ -78,7 +78,7 @@ def create_user():
     if not user_password:
         return jsonify({'Message':"Password is required"}),400
     if  not user_user_type:
-        default = "customer"
+        default = "client"
         user_user_type = default
     
     # password validation length
