@@ -21,10 +21,10 @@ class Order(db.Model):
     quantity = db.Column(db.Integer)
     delivery_mode = db.Column(db.String(10)) 
     delivery_address = db.Column(db.String(255))
-    Made_at = db.Column(db.DateTime, default = datetime.now())
-    needed_by = db.Colummn(db.String(7))
+    made_at = db.Column(db.DateTime, default = datetime.now())
+    needed_by = db.Column(db.String(7))
     status = db.Column(db.String(9))
-    updated_at = db.Column(db.Datetime, onupdate=datetime.now())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.now())
 
     def __repr__():
         return f"Menu item number, {Order.menu}"

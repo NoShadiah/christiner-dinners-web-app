@@ -1,32 +1,37 @@
-from db import db
+from models.db import db
 from flask_jwt_extended import jwt_required
 from models.users.model import User
-from from flasgger import swag_from
+from models.orders.model import Order
+from  flasgger import swag_from
 from flask import  jsonify, request, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-menu = Blueprint("menu", __name__, url_prefix="/api/v2/menu")
+orders = Blueprint("orders", __name__, url_prefix="/api/v2/orders")
 
-@menu.route("/all", methods=["GET"])
+@orders.route("/all", methods=["GET"])
 @jwt_required()
 def get_all():
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "sper admin":
-        return {"message":"Sorry access denied"}
-    else:
-        menuitems = MenuItem.query.all()
-        response = [{
-            "name":item.name,
-            "image":item.image,
-            "description":item .description
-    } for item in menuitems]
-        return {"total":len(menuitems), "data":response}
+    # if userType != "sper admin":
+    #     return {"message":"Sorry access denied"}
+    
+    orders = Order.query.all()
+    response = [{
+            "made_by":order.made_by,
+            "menu_item":order.menu_item,
+            "quantity":order.quantity,
+            "delivery_address":order.delivery_address,
+            "made_at":order.made_at,
+            "needed_by":order.needed_by,
+            "status":order.status
+    } for order in orders]
+    return {"total":len(orders), "data":response}
 
-@menu.route("/catgory/<id>", methods=['POST'])
+@orders.route("/catgory/<id>", methods=['POST'])
 @jwt_required()
-def specific_item(id):
+def specific_order(id):
     # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
@@ -35,23 +40,23 @@ def specific_item(id):
         return {"message":"Sorry access denied"}
     else:            
             def register():
-                name = request.json("name")
-                image = request.json("image")
-                description = request.json("description")
+                made_by = request.json("made_by")
+                menu_item = request.json("menu_item")
+                quantity = request.json("quantity")
                 registered_by =user_logged_in
-                if not name or image or description:
+                if not made_by or menu_item or quantity:
                     return {"message":"All fields are required"}
                 
-                new_item = MenuItem(name=name, image=image, description=description, registered_by=registered_by)
-                db.session.add(new_item)
+                new_order = Order(made_by=made_by, menu_item=menu_item, quantity=quantity, registered_by=registered_by)
+                db.session.add(new_order)
                 db.session.commit()
-                return {"message":"successfully added a new food item", "data": new_item}
+                return {"message":"successfully added a new food order", "data": new_order}
             
             return register()
     
-@menu.route("/item/<id>", methods=["GET", "PUT", "DELETE"])
+@orders.route("/order/<id>", methods=["GET", "PUT", "DELETE"])
 @jwt_required()
-def single_item(id):
+def single_order(id):
      # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
@@ -60,24 +65,24 @@ def single_item(id):
         return {"message":"Sorry access denied"}
     
     else:
-        item = MenuItem.query.get_or_404(id)
+        order = Order.query.get_or_404(id)
         if request.method == "GET":
                 
-                return {"messgae":f"You successfully retrieved item {id}", "details":item}
+                return {"messgae":f"You successfully retrieved order {id}", "details":order}
         elif request.method == "PUT":
-                item.name = request.json["name"]
-                item.image = request.json["image"]
-                item.description = request.json["description"]
+                order.made_by = request.json["made_by"]
+                order.menu_item = request.json["menu_item"]
+                order.quantity = request.json["quantity"]
                  
-                if not item.name or item.image or item.decription:
+                if not order.made_by or order.menu_item or order.decription:
                      return {"message":"All fields required"}
                 else:
                  
-                    db.session.add(item)
+                    db.session.add(order)
                     db.session.commit()
-                    return {"message":f"You successfully updated food item {item.id}"}
+                    return {"message":f"You successfully updated food order {order.id}"}
                 
         elif request.method == "DELETE":
-             db.session.delete(item)
+             db.session.delete(order)
              db.session.commit()
-             return {"message":f"You successfully deleted {item.name}"}
+             return {"message":f"You successfully deleted {order.made_by}"}
