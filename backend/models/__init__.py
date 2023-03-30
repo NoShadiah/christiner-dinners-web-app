@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from flasgger import Swagger, swag_from
 from models.documentation.config.swagger import template, swagger_config
+from datetime import timedelta
 
 
 
@@ -15,6 +16,7 @@ def create_app(config_name):
     config[config_name].init_app(app)
     app.config.JWT_SECRET_KEY="super secret key"
     app.config.from_pyfile("../config.py")
+    app.config.JWT_ACCESS_TOKEN_EXPIRES=timedelta(hours=1)
     app.config.SWAGGER = {
         "tittle ":"Online food delivery API",
         "ui_version":3

@@ -4,7 +4,7 @@ from models.users.model import User
 from models.db import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity, unset_jwt_cookies
 from flasgger import swag_from
 
 users = Blueprint('users', __name__, url_prefix='/api/v2/users')
@@ -185,6 +185,12 @@ def handle_user(user_id):
             db.session.commit()
             return {"message": f"User {user.first_name} successfully deleted."}   
   
-
+# logging out a user
+# unset_jwt_cookies function which deletes the cookies containing the access token for the user
+@users.route("/logout", methods=["POST"])
+def logout():
+    response = jsonify({"message": "logout successful"})
+    unset_jwt_cookies(response)
+    return response
 
 
