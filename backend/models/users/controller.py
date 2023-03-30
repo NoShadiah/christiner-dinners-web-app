@@ -67,6 +67,7 @@ def create_user():
     user_password = request.json['password']
     user_user_type=request.json['user_type']
     user_gender = request.json['gender']
+    address = request.json['address']
     password_hash = generate_password_hash(user_password)
   
 
@@ -117,7 +118,8 @@ def create_user():
                     contact = user_contact,
                     password=password_hash,
                      user_type=user_user_type,
-                     gender=user_gender)
+                     gender=user_gender,
+                    address = address)
     #  address = user_address,
     
 
