@@ -12,7 +12,7 @@ class Order(db.Model):
     delivery_address:str
     made_at:str
     needed_by:str
-    # status:str
+    status:str
 
     __tablename__ = "orders"
     id = db.Column(db.Integer, primary_key = True)

@@ -8,49 +8,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 
 orders = Blueprint("orders", __name__, url_prefix="/api/v2/orders")
 
-@orders.route("/user/orders", methods=["GET"])
-@jwt_required()
-def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    # if userType != "sper admin":
-    #     return {"message":"Sorry access denied"}
-    
-    orders = Order.query.all()
-    response = [{
-            "menu_item":order.menu_item,
-            "quantity":order.quantity,
-            "delivery_address":order.delivery_address,
-            "made_at":order.made_at,
-            "needed_by":order.needed_by,
-            "status":order.status
-    } for order in orders]
-    return {"total":len(orders), "data":response}
-
-#for admins to view all orders
-@orders.route("/all", methods=["GET"])
-@jwt_required()
-def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType == "client" or userType == "customer":
-        return {"message":"Sorry but access denied, you are unauthorized"}
-    
-    orders = Order.query.all()
-    response = [{
-            "made_by":order.made_by,
-            "menu_item":order.menu_item,
-            "quantity":order.quantity,
-            "delivery_address":order.delivery_address,
-            "made_at":order.made_at,
-            "needed_by":order.needed_by,
-            "status":order.status
-    } for order in orders]
-    return {"total":len(orders), "data":response}
- 
-
+# client making an order
 @orders.route("/make_order", methods=['POST'])
 @jwt_required()
 def specific_order():
@@ -85,6 +43,52 @@ def specific_order():
             
             return register()
     
+
+@orders.route("/user/orders", methods=["GET"])
+@jwt_required()
+def get_all():
+    user_logged_in=get_jwt_identity()
+    check_user_details = User.query.filter_by(id=user_logged_in).first()
+    userType = check_user_details.user_type
+    if userType != "client":
+        return {"message":"Sorry you have no orders made yet, create an account and make an order"}
+    
+    else:
+        
+        response = [{
+                "menu_item":order.menu_item,
+                "quantity":order.quantity,
+                "delivery_address":order.delivery_address,
+                "made_at":order.made_at,
+                "needed_by":order.needed_by,
+                "status":order.status
+        } for order in check_user_details]
+        return jsonify({"You have made":len(check_user_details)+" orders", "They include":response})
+
+#for admins to view all orders
+@orders.route("/all", methods=["GET"])
+@jwt_required()
+def get_all():
+    user_logged_in=get_jwt_identity()
+    check_user_details = User.query.filter_by(id=user_logged_in).first()
+    userType = check_user_details.user_type
+    if userType == "client" or userType == "customer":
+        return {"message":"Sorry but access denied, you are unauthorized"}
+    
+    orders = Order.query.all()
+    response = [{
+            "made_by":order.made_by,
+            "menu_item":order.menu_item,
+            "quantity":order.quantity,
+            "delivery_address":order.delivery_address,
+            "made_at":order.made_at,
+            "needed_by":order.needed_by,
+            "status":order.status
+    } for order in orders]
+    return jsonify({"total":len(orders), "data":response})
+ 
+
+
 @orders.route("/order/<id>", methods=["GET", "PUT", "DELETE"])
 @jwt_required()
 def single_order(id):
@@ -109,7 +113,7 @@ def single_order(id):
                 
                  
                 if not order.status:
-                     return {"message":"All fields required"}
+                     return {"message":"Please update the status or abort opreation"}
                 else:
                  
                     db.session.add(order)

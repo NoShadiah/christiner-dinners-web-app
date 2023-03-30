@@ -4,14 +4,14 @@ from models.users.model import User
 from models.db import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token
+from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 from flasgger import swag_from
 
 users = Blueprint('users', __name__, url_prefix='/api/v2/users')
 
 #user login
 @users.route("/login", methods=["POST"])
-# @swag_from('../documentation/docs/user/login.yaml')
+@swag_from('../documentation/docs/user/login.yaml')
 def login():
     email = request.json.get("email")
     user_password = request.json.get("password")
@@ -41,13 +41,22 @@ def login():
 
 #get all users
 @users.route("/all")
+@jwt_required()
 def all_users():
-    users= User.query.all()
-    return jsonify({
-            "success":True,
-            "data":users,
-            "total":len(users)
-        }),200
+    user_logged_in=get_jwt_identity()
+    check_user_details = User.query.filter_by(id=user_logged_in).first()
+    userType = check_user_details.user_type
+    if userType == "client" or userType == "customer":
+        return {"message":"Sorry but access denied, you are unauthorized"}
+    
+
+    else:
+        users= User.query.all()
+        return jsonify({
+                "success":True,
+                "data":users,
+                "total":len(users)
+            }),200
 
 @users.route('/register',methods=['POST'])
 def create_user():
