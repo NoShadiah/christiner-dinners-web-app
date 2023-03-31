@@ -9,6 +9,7 @@ import { GalleryButton } from "./components/gallery/button";
 import { UsersButton } from "./components/users/button";
 import { OrderButton } from "./components/orders/button";
 import { SettingsButton } from "./components/settings/button";
+import { Users } from "./components/users/retrieve";
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
             </div>
             <div id="content_section">
                 <h2>this is the content_section</h2>
+                <Users/>
             </div>
         </div>
     )

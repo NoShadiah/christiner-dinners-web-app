@@ -53,7 +53,11 @@ def all_users():
     # else:
         users = User.query.all()
         response = [{
-            "First name":user.first_name            
+            "First name":user.first_name, 
+            "Last name":user.last_name,
+            "Email":user.email,
+            "Contact":user.contact,
+            "User type":user.user_type           
         }for user in users]
         return jsonify(
                 response),200
