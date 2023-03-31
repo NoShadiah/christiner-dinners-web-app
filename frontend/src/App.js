@@ -16,6 +16,9 @@ const App = () => {
         <div id="dashboard">
             <div id="sidebar">
                 <h1>NAVZS  Restaurant</h1>
+                <div id="db_links">
+
+                </div>
                 <UsersButton/>
                 <MenuButton/>
                 <OrderButton/>
