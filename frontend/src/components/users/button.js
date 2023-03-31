@@ -2,12 +2,12 @@ import "./styling.css"
 
 export function UsersButton(){
     return(
-        <div class="dropdown">
-            <button class="dropbtn">Users</button>
-            <div class="dropdown-content">
-                <a href="#">Pending Orders</a>
-                <a href="#">Delivered orders</a>
-                <a href="#">All orders</a>
+        <div className="dropdown">
+            <button className="dropbtn">Users</button>
+            <div className="dropdown-content">
+                <button id="btn">Pending Orders</button>
+                <button id="btn">Delivered orders</button>
+                <button id="btn">All orders</button>
             </div>
         </div>
     );
