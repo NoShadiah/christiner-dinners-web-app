@@ -1,4 +1,4 @@
-import "../categories/styling.css"
+import "./styling.css"
 
 export function FoodItemsButton(){
     return(
