@@ -1,0 +1,21 @@
+body{
+    color: rgb(255, 204, 0);
+    font-weight: 500;
+    font-size: larger;
+}   
+#dashboard{
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 2fr 10fr;
+    background: rgb(48, 1, 1);
+}
+    
+
+
+#dashboard #content_section{
+    background-color: white;
+    height: 100%;
+    color:rgb(48, 1, 1);
+    border-left: 2px solid orange;
+
+}
