@@ -7,15 +7,15 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 
 menu = Blueprint("menu", __name__, url_prefix="/api/v2/menu")
 
-@menu.route("/all", methods=["GET"])
-@jwt_required()
-def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType == "sper admin" or userType=="admin":
-        return {"message":"Sorry, clients are legible to access this menu in this org"}
-    else:
+@menu.route("/clients_view", methods=["GET"])
+# @jwt_required()
+def get_menu():
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType == "sper admin" or userType=="admin":
+    #     return {"message":"Sorry, clients are legible to access this menu in this org"}
+    # else:
         menuitems = MenuItem.query.all()
         response = [{
                 "name":item.name,
@@ -45,8 +45,8 @@ def get_all():
                 "price":item.price,
                 "served_at":item.served_at,
                 "category":item.category_id,
-                "reg_at":item.registered_at,
-                "updated":item.updated_at
+                "reg_at":item.reg_at,
+                "updated":item.upd_at
         } for item in menuitems]
         return {"total":len(menuitems), "data":response}
 
@@ -77,12 +77,12 @@ def specific_item(id):
                 new_item = MenuItem(name=name, 
                                     image=image, 
                                     description=description, 
-                                    registered_by=registered_by, 
+                                    reg_by=registered_by, 
                                     price_unit=price_unit, 
                                     price = price, 
                                     served_at = served_at,
                                     category_id = category_id,
-                                    updated_by = "notyet")
+                                    upd_by = "notyet")
                 db.session.add(new_item)
                 db.session.commit()
                 return {"message":"successfully added a new menu item", "data": new_item}
@@ -112,7 +112,7 @@ def single_item(id):
                 item.price = request.json["price"]
                 item.served_at = request.json["served_at"]
                 item.category_id = request.json["category_id"]
-                item.updated_by = user_logged_in
+                item.upd_by = user_logged_in
                  
                 if not item.name or item.image or item.decription:
                      return {"message":"All fields required"}

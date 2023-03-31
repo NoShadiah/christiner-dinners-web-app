@@ -42,10 +42,10 @@ def create_app(config_name):
     app.register_blueprint(users)
     app.register_blueprint(foodcategories)
     app.register_blueprint(gallery)
-    # app.register_blueprint(menu)
+    app.register_blueprint(menu)
     # app.register_blueprint(settings)
     app.register_blueprint(fooditems)
-    # app.register_blueprint(orders)
+    app.register_blueprint(orders)
 
    
     return app

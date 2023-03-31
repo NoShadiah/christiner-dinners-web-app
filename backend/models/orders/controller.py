@@ -68,7 +68,7 @@ def get_all():
 #for admins to view all orders
 @orders.route("/all", methods=["GET"])
 @jwt_required()
-def get_all():
+def get():
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
