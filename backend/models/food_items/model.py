@@ -19,8 +19,8 @@ class FoodItem(db.Model):
     description = db.Column(db.String(250))
     in_category = db.Column(db.Integer, db.ForeignKey('Food_Categories.id'))
     registered_by = db.Column(db.Integer, db.ForeignKey('users.id'))
-    registered_at = db.Column(db.DateTime, default=datetime.now())
-    updated_at = db.Column(db.DateTime, onupdate=datetime.now())
+    registered_at = db.Column(db.String(200), default=datetime.now())
+    updated_at = db.Column(db.String(200), onupdate=datetime.now())
 
     def __repr__():
         return(f"<Item>..............{FoodItem.name}")

@@ -55,11 +55,8 @@ def all_users():
         response = [{
             "First name":user.first_name            
         }for user in users]
-        return jsonify({
-                "success":True,
-                "data":users,
-                "total":len(users)
-            }),200
+        return jsonify(
+                response),200
 
 @users.route('/register',methods=['POST'])
 def create_user():
@@ -177,7 +174,7 @@ def handle_user(user_id):
         user.email = data['email']
         user.contact = data['contact']
         user.password = generate_password_hash(data['password'])
-        user.updated_at = datetime.now()
+        # user.updated_at = datetime.now()
         db.session.add(user)
         db.session.commit()
         return {"message": f"User details of {user.first_name} updated successfully"}

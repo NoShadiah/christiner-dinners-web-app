@@ -23,8 +23,8 @@ class MenuItem(db.Model):
     price = db.Column(db.Integer)
     registered_by = db.Column(db.String(50))
     updated_by = db.Column(db.String(50), onupdate="admin")
-    reg_at = db.Column(db.DateTime, default = datetime.now())
-    upd_at = db.Column(db.DateTime, onupdate = datetime.now())
+    reg_at = db.Column(db.String(200), default = datetime.now())
+    upd_at = db.Column(db.String(200), onupdate = datetime.now())
 
     def __repr__():
         return f"<Menu Item>>>>>>>>>{MenuItem.name}"
