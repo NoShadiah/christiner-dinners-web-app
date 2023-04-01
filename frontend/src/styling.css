@@ -27,7 +27,7 @@
   .dropdown-content .btn {
     color: rgb(68, 0, 0);
     padding: 12px 16px;
-    text-decoration: none;
+    /* text-decoration: none; */
     display: block;
   }
   
@@ -40,3 +40,17 @@
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: orange;}
   
+  .users-section .users-list table {
+    border: 2px solid black;
+    /* padding:10px 10px 10px 10px; */
+    
+  }
+  .users-section .users-list table tr td, .users-section .users-list table tr th{
+    border: 2px solid black;
+    align-items: center;
+    width: 200px;
+  }
+
+  .users-section .users-list table tr{
+    width: 200px;
+  }

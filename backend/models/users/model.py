@@ -33,7 +33,7 @@ class User(db.Model):
   orders = db.relationship("Order",  backref="user")
 
 
-  def __init__(self, first_name, last_name, email,contact,user_type,password, gender):
+  def __init__(self, first_name, last_name, email,contact,user_type,password, gender, address):
    self.first_name = first_name
    self.last_name = last_name
    self.email = email
@@ -41,6 +41,7 @@ class User(db.Model):
    self.user_type = user_type
    self.password = password
    self.gender = gender
+   self.address = address
    
 
   
@@ -51,13 +52,6 @@ class User(db.Model):
   
 
         
-   #save a new instance
-  def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-   #delete the item
-  def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+   
+ 
  

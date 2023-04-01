@@ -57,7 +57,11 @@ def all_users():
             "Last name":user.last_name,
             "Email":user.email,
             "Contact":user.contact,
-            "User type":user.user_type           
+            "User type":user.user_type ,
+            "Gender":user.gender,
+            "Address":user.address,
+            "Registered at":user.registered_at,
+            "Updated at":user.updated_at
         }for user in users]
         return jsonify(
                 response),200
@@ -71,7 +75,7 @@ def create_user():
     user_password = request.json['password']
     user_user_type=request.json['user_type']
     user_gender = request.json['gender']
-    address = request.json['address']
+    user_address = request.json['address']
     password_hash = generate_password_hash(user_password)
   
 
@@ -123,7 +127,7 @@ def create_user():
                     password=password_hash,
                      user_type=user_user_type,
                      gender=user_gender,
-                    address = address)
+                    address = user_address)
     #  address = user_address,
     
 

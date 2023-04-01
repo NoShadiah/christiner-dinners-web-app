@@ -8,30 +8,34 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 foodcategories = Blueprint("foodcategories", __name__, url_prefix="/api/v2/foodcategories")
 
 @foodcategories.route("/all", methods=["GET"])
-@jwt_required()
+# @jwt_required()
 def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType != "sper admin":
-        return {"message":"Sorry access denied"}
-    else:
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType != "sper admin":
+    #     return {"message":"Sorry access denied"}
+    # else:
         categories = FoodCategory.query.all()
         response = [{
+             "id":category.id,
             "name":category.name,
             "image":category.image,
-            "description":category .description
+            "description":category.description,
+            "registrered at":category.registered_at,
+            "registerd_by":category.registered_by,
+            "updated_at":category.updated_at
     } for category in categories]
-        return {"total":len(categories), "data":response}
+        return jsonify(response)
 
-@foodcategories.route("/catgory/<id>", methods=['POST'])
+@foodcategories.route("/register", methods=['POST'])
 @jwt_required()
-def specific_category(id):
+def registercategory():
     # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "super admin":
+    if userType == "client":
         return {"message":"Sorry access denied"}
     else:            
             def register():
@@ -39,7 +43,7 @@ def specific_category(id):
                 image = request.json["image"]
                 description = request.json["description"]
                 registered_by =user_logged_in
-                if not name or image or description:
+                if not name or not image or not description:
                     return {"message":"All fields are required"}
                 
                 new_category = FoodCategory(name=name, image=image, description=description, registered_by=registered_by)
