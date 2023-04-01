@@ -24,9 +24,9 @@ export function Categories() {
     // console.log("categories state:",categories)
     // console.log("storagecategories", JSON.parse(localStorage.getItem("mycategories")))
     return (
-            <div className='categories-section'>
+            <div className='section'>
                 <h3>A list of my categories</h3>
-                <div className='categories-list'>
+                <div className='list'>
                    <table>
                          <tr className="head">
                             <th>Id</th>

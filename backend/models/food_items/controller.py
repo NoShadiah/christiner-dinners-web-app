@@ -8,19 +8,22 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 fooditems = Blueprint("fooditems", __name__, url_prefix="/api/v2/fooditems")
 
 @fooditems.route("/all", methods=["GET"])
-@jwt_required()
+# @jwt_required()
 def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType != "sper admin":
-        return {"message":"Sorry access denied"}
-    else:
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType != "sper admin":
+    #     return {"message":"Sorry access denied"}
+    # else:
         items = FoodItem.query.all()
         response = [{
             "name":item.name,
             "image":item.image,
-            "description":item .description
+            "description":item .description,
+            "registrered at":item.registered_at,
+            "registerd_by":item.registered_by,
+            "updated_at":item.updated_at
     } for item in items]
         return {"total":len(items), "data":response}
 

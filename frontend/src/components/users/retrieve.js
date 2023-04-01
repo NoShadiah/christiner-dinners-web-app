@@ -24,9 +24,9 @@ export function Users() {
     console.log("users state:",users)
     // console.log("storageUsers", JSON.parse(localStorage.getItem("myUsers")))
     return (
-            <div className='users-section'>
+            <div className='section'>
                 <h3>A list of my users</h3>
-                <div className='users-list'>
+                <div className='list'>
                    <table>
                          <tr className="head">
                             <th>First Name</th>

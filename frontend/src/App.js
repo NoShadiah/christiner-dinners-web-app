@@ -3,13 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./App.css"
 
 import { Users } from "./components/users/retrieve";
+import { UserRegister } from "./components/users/register";
 import { Categories } from "./components/categories/retrieve";
 import { useState } from "react";
 import "./styling.css"
 
 
 const App = () => {
-    const [active, setActive] = useState("")
+    const [active, setActive] = useState("");
+    
     
         
         return(
@@ -86,8 +88,18 @@ const App = () => {
                 
                 <div id="content_section">
                     <h2>this is the content_section</h2>
-                    {active === "All Users" && <Users/>}
-                    {active === "All Categories" && <Categories/>}
+                    <button onClick={()=>setActive("Register User")}>Register</button>
+                    <button onClick={()=>{setActive(""); setActive("All Users")}}>Save</button>
+                    <div>
+                        <div>
+                            {active === "Register User" && <UserRegister/>}
+                            
+                        </div>
+                        <div>
+                            {active === "All Users" && <Users/>}
+                            {active === "All Categories" && <Categories/>}
+                        </div>
+                    </div>
                 </div>
                 
             </div>

@@ -68,8 +68,8 @@ def all_users():
 
 @users.route('/register',methods=['POST'])
 def create_user():
-    user_fname =request.json['first name']
-    user_lname = request.json['last name']
+    user_fname =request.json['firstname']
+    user_lname = request.json['lastname']
     user_email = request.json['email']
     user_contact =request.json['contact']  
     user_password = request.json['password']

@@ -40,17 +40,21 @@
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: orange;}
   
-  .users-section .users-list table {
+  .section .list table {
     border: 2px solid black;
     /* padding:10px 10px 10px 10px; */
     
   }
-  .users-section .users-list table tr td, .users-section .users-list table tr th{
+  .section .list table tr td, .section .list table tr th{
     border: 2px solid black;
     align-items: center;
     width: 200px;
   }
 
-  .users-section .users-list table tr{
+  .section .list table tr{
     width: 200px;
+  }
+
+  .section .list table tr td{
+    margin-left: 40px;
   }
