@@ -59,16 +59,17 @@ export function UserRegister(props){
 //     setUsers(new_users)
 //   }
     function InsertUser(){
-        const data = {
-            firstname:{firstname},
-            lastname:{lastname},
-            email:{email},
-            contact:{contact},
-            address:{address},
-            password:{password},
-            user_type:{usertype},
-            gender:{gender}
-        };
+       const data = {
+        firstname,
+        lastname,
+        email,
+        contact,
+        address,
+        password,
+        user_type:usertype,
+        gender
+    }
+    
 
         fetch("http://localhost:5000/api/v2/users/register", {
         method: "POST", // or 'PUT'
@@ -98,97 +99,75 @@ export function UserRegister(props){
         setPassword('')
         setGender('')
       }
-    // const handleSubmit = () =>{
-    //     // event.preventDefault();
-    //     fetch('http://127.0.0.1:5000/api/v2/users/register', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({
-    //         first_name:{firstname},
-    //         last_name:{lastname},
-    //         email:{email},
-    //         password:{password},
-    //         contact:{contact},
-    //         address:{address},
-    //         gender:{gender}
-    //         })
-    //         })
-    //     .then(res => res.json())
-    //     .then(console.log);
-    //     // alert({success})
-    //     // console.log("Your password is",firstname+contact+"!?23%4"+email+"!&")
-    // }
-    // useEffect(()=>{
-    //     handleSubmit();
-    // }, [])
+    
     return(
         <div id='form1'>
-        <h1>Enter User Details</h1>
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>First name: </label>
-                <input 
-                type='text'
-                value={firstname}
-                onChange={ChangeFirstName}
-                required
-                />
-            </div>
-            <div>
-                <label>Last name: </label>
-                <input 
-                type='text'
-                value={lastname}
-                onChange={ChangeLastName}
-                required
-                />
-            </div>
-            <div>
-                <label>Enter email: </label>
-                <input 
-                type='text'
-                value={email}
-                onChange={ChangeEmail}
-                required/>
-                
-            </div>
-            <div>
-                <label>Enter your contact: </label>
-                <input 
-                type='text'
-                value={contact}
-                onChange={ChangeContact}
-                required/>
-            </div>
-            <div>
-                <label>Address: </label>
-                <input 
-                type='text'
-                value={address}
-                onChange={ChangeAddress}
-                required/>
-            </div>
-            <div>
-                <label>Gender: </label>
-                <input 
-                type='text'
-                value={gender}
-                onChange={ChangeGender}
-                required/>
-            </div>
-            <div>
-                <label>Password: </label>
-                <input 
-                type='text'
-                value={password}
-                onChange={ChangePassword}
-                required/>
-            </div>
-            <div>
-                <button >Submit</button>
-                <p>Submit form the form and hit the save button to Save the user</p>
-            </div>
-        </form>
+            <h1>Enter User Details</h1>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>First name: </label>
+                    <input 
+                    type='text'
+                    value={firstname}
+                    onChange={ChangeFirstName}
+                    required
+                    />
+                </div>
+                <div>
+                    <label>Last name: </label>
+                    <input 
+                    type='text'
+                    value={lastname}
+                    onChange={ChangeLastName}
+                    required
+                    />
+                </div>
+                <div>
+                    <label>Enter email: </label>
+                    <input 
+                    type='text'
+                    value={email}
+                    onChange={ChangeEmail}
+                    required/>
+                    
+                </div>
+                <div>
+                    <label>Enter your contact: </label>
+                    <input 
+                    type='text'
+                    value={contact}
+                    onChange={ChangeContact}
+                    required/>
+                </div>
+                <div>
+                    <label>Address: </label>
+                    <input 
+                    type='text'
+                    value={address}
+                    onChange={ChangeAddress}
+                    required/>
+                </div>
+                <div>
+                    <label>Gender: </label>
+                    <input 
+                    type='text'
+                    value={gender}
+                    onChange={ChangeGender}
+                    required/>
+                </div>
+                <div>
+                    <label>Password: </label>
+                    <input 
+                    type='password'
+                    value={password}
+                    onChange={ChangePassword}
+                    required/>
+                </div>
+                <div>
+                    <button >Submit</button>
+                    <p>Submit form the form and hit the save button to Save the user</p>
+                </div>
+            </form>
 
     </div>
     )

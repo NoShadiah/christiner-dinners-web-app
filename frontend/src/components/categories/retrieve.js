@@ -45,7 +45,7 @@ export function Categories() {
                                     <td>{user["image"]}</td>
                                     <td>{user["description"]}</td>
                                     <td>{user["registered_by"]}</td>
-                                    <td>{user["registered_at"]}</td>
+                                    <td>{user["registered at"]}</td>
                                     <td>{user["updated_at"]}</td>
                                 </tr>))
                         }
