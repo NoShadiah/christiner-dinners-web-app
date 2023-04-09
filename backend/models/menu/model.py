@@ -26,5 +26,7 @@ class MenuItem(db.Model):
     reg_at = db.Column(db.String(200), default = datetime.now())
     upd_at = db.Column(db.String(200), onupdate = datetime.now())
 
+    orders = db.relationship("Order", backref = "menuitem")
+
     def __repr__():
         return f"<Menu Item>>>>>>>>>{MenuItem.name}"

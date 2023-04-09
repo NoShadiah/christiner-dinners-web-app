@@ -5,6 +5,8 @@ from models.orders.model import Order
 from  flasgger import swag_from
 from flask import  jsonify, request, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from models.menu.model import MenuItem
+import math
 
 orders = Blueprint("orders", __name__, url_prefix="/api/v2/orders")
 
@@ -24,18 +26,31 @@ def specific_order():
                 made_by = user_logged_in
                 menu_item = request.json["menu_item"]
                 quantity = request.json["quantity"]
+
+                # taking the grand total
+                menu_item_filtering = MenuItem.query.filter_by(name=menu_item).first()
+                menu_item_id = menu_item_filtering.id
+                item_price = menu_item_filtering.price
+                # getting and rounding off the grand total of the order
+                total = str(math.floor(int(quantity*item_price)))
+                order_grand_total = total
+                
+
                 delivery_address = request.json["delivery_address"]
-                needed_by = request.json["needed_by"]
+                needed_by = request.json["needed_in"]
                 status = "pending"
                 
-                if not delivery_address or menu_item or quantity or needed_by:
+                if not delivery_address or not menu_item or not quantity or not needed_by:
                     return {"message":"All fields are required"}
                 
+                
+                
                 new_order = Order(made_by=made_by,
-                                  menu_item=menu_item, 
+                                  menu_item=menu_item_id, 
                                   quantity=quantity, 
                                   delivery_address=delivery_address, 
-                                  needed_by=needed_by, 
+                                  needed_by=needed_by,
+                                  grand_total=order_grand_total,
                                   status = status)
                 db.session.add(new_order)
                 db.session.commit()
@@ -54,6 +69,7 @@ def get_all():
         return {"message":"Sorry you have no orders made yet, create an account and make an order"}
     
     else:
+        U_orders = Order.query.filter_by(made_by=user_logged_in)
         
         response = [{
                 "menu_item":order.menu_item,
@@ -62,8 +78,8 @@ def get_all():
                 "made_at":order.made_at,
                 "needed_by":order.needed_by,
                 "status":order.status
-        } for order in check_user_details]
-        return jsonify({"You have made":len(check_user_details)+" orders", "They include":response})
+        } for order in U_orders]
+        return jsonify({"You have made":f"{len(response)}" +" orders", "They include":response})
 
 #for admins to view all orders
 @orders.route("/all", methods=["GET"])
@@ -89,7 +105,7 @@ def get():
  
 
 
-@orders.route("/order/<id>", methods=["GET", "PUT", "DELETE"])
+@orders.route("/order/<id>", methods=["GET", "PATCH", "DELETE"])
 @jwt_required()
 def single_order(id):
      # checking the user type
@@ -107,7 +123,7 @@ def single_order(id):
         if request.method == "GET":
                 
                 return {"messgae":f"You successfully retrieved order {id}", "details":order}
-        elif request.method == "PUT":
+        elif request.method == "PATCH":
                 order.status = request.json["status"]
                 order.updated_by = user_name
                 

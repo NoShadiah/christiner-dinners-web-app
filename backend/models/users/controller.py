@@ -10,7 +10,7 @@ from flasgger import swag_from
 users = Blueprint('users', __name__, url_prefix='/api/v2/users')
 
 #user login
-@users.route("/login", methods=["POST"])
+@users.route("/token", methods=["POST"])
 @swag_from('../documentation/docs/user/login.yaml')
 def login():
     email = request.json.get("email")
@@ -28,7 +28,7 @@ def login():
             validate=check_password_hash(password_hashed, u_password)
             if validate:
                 access_token = create_access_token(identity=user.id) #to make JSON Web Tokens for authentication
-                return {"message":"you successfully logged in", "access token":access_token}
+                return {"message":"you successfully logged in", "access token":f"{access_token}"}
             else:
                 return "Provided an incorrect password"
         return password()

@@ -19,9 +19,9 @@ def get_all():
     } for gallery_item in galleryitems]
         return {"total":len(galleryitems), "data":response}
 
-@gallery.route("/gallery/<id>", methods=['POST'])
+@gallery.route("/register", methods=['POST'])
 @jwt_required()
-def specific_gallery_item(id):
+def specific_gallery_item():
     # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
@@ -34,7 +34,7 @@ def specific_gallery_item(id):
                 image = request.json["image"]
                 description = request.json["description"]
                 registered_by =user_logged_in
-                if not name or image or description:
+                if not name or not image or not description:
                     return {"message":"All fields are required"}
                 
                 new_gallery_item = GalleryItem(name=name, image=image, description=description, registered_by=registered_by)

@@ -53,7 +53,7 @@ def get_all():
 
 @menu.route("/register", methods=['POST'])
 @jwt_required()
-def specific_item(id):
+def specific_item():
     # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
@@ -71,18 +71,18 @@ def specific_item(id):
                 served_at = request.json["served_at"]
                 category_id = request.json["category_id"]
 
-                if not name or image or description:
+                if not name or not image or not description:
                     return {"message":"All fields are required"}
                 
                 new_item = MenuItem(name=name, 
                                     image=image, 
                                     description=description, 
-                                    reg_by=registered_by, 
+                                    registered_by=registered_by, 
                                     price_unit=price_unit, 
                                     price = price, 
                                     served_at = served_at,
                                     category_id = category_id,
-                                    upd_by = "notyet")
+                                    )
                 db.session.add(new_item)
                 db.session.commit()
                 return {"message":"successfully added a new menu item", "data": new_item}

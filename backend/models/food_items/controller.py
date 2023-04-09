@@ -27,25 +27,26 @@ def get_all():
     } for item in items]
         return {"total":len(items), "data":response}
 
-@fooditems.route("/catgory/<id>", methods=['POST'])
+@fooditems.route("/register", methods=['POST'])
 @jwt_required()
-def specific_item(id):
+def specific_item():
     # checking the user type
     user_logged_in=get_jwt_identity()
     check_user_details = User.query.filter_by(id=user_logged_in).first()
     userType = check_user_details.user_type
-    if userType != "sper admin":
+    if userType != "super admin":
         return {"message":"Sorry access denied"}
     else:            
             def register():
                 name = request.json["name"]
                 image = request.json["image"]
                 description = request.json["description"]
+                category = request.json["category"]
                 registered_by =user_logged_in
-                if not name or image or description:
+                if not name or not image or not description:
                     return {"message":"All fields are required"}
                 
-                new_item = FoodItem(name=name, image=image, description=description, registered_by=registered_by)
+                new_item = FoodItem(name=name, image=image, description=description, registered_by=registered_by, in_category=category)
                 db.session.add(new_item)
                 db.session.commit()
                 return {"message":"successfully added a new food item", "data": new_item}

@@ -1,13 +1,13 @@
 import {useState} from "react";
 // Number 1
-export function MyForm(){
-    const [name, setName]=useState("");
+export function Login(){
+    const [password, setPassword]=useState("");
     const [email, setEmail]=useState("");
-    const [contact, setContact]=useState("");
+    
     const Change=(e)=>{
-             setName(e.target.value)
+             setPassword(e.target.value)
             
-             console.log(name)
+             console.log(password)
 
     }
     const ChangeEmail=(e)=>{
@@ -15,44 +15,58 @@ export function MyForm(){
        setEmail(e.target.value)
         console.log(email)
     }
-    const ChangeContact=(e)=>{
-        
-        setContact(e.target.value)
-        console.log(contact)
+    
+    function UserLogin(){
+        const details = {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                // 'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        }
+        fetch('http://127.0.0.1:5000/api/v2/users/token', details)
+        .then(response => {
+            if (response.status === 200) 
+            console.log(response)
+            else console.log("invalid credentials")
+        })
+        .then((data)=>{console.log(data); localStorage.setItem('token', JSON.stringify(data))})
+        .catch(error =>(
+            console.error("There is a problem", error)
+        ))
     }
+   
     const handleSubmit = (event) =>{
         event.preventDefault();
-        alert('Thank you, we have generated for you a password')
-        console.log("Your password is",name+contact+"!?23%4"+email+"!&")
+        UserLogin()
+        // console.log("Your password is",password+"!?23%4"+email+"!&")
     }
     return(
         <div id='form1'>
-        <h1>Please provide your data and check the console</h1>
+        <h1>Please Login to go further.</h1>
         <form onSubmit={handleSubmit}>
             <div>
-            <label>Enter your name: </label>
+            <label>Enter your password: </label>
             <input 
-            type='text'
-            value={name}
+            type='password'
+            value={password}
             onChange={Change}
             />
             </div>
             <div>
             <label>Enter email: </label>
             <input 
-            type='text'
+            type='email'
             value={email}
             onChange={ChangeEmail}/>
             </div>
+            
             <div>
-            <label>Enter your contact: </label>
-            <input 
-            type='text'
-            value={contact}
-            onChange={ChangeContact}/>
-            </div>
-            <div>
-                <button >Submit</button>
+                <button >LogIn</button>
             </div>
         </form>
 

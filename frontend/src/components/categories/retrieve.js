@@ -38,15 +38,15 @@ export function Categories() {
                             <th>Updated at</th>
                         </tr>
                         {
-            categories?.map(user =>(
+            categories?.map(category =>(
                                 <tr className="head">
-                                    <td>{user["id"]}</td>
-                                    <td>{user["name"]}</td>
-                                    <td>{user["image"]}</td>
-                                    <td>{user["description"]}</td>
-                                    <td>{user["registered_by"]}</td>
-                                    <td>{user["registered at"]}</td>
-                                    <td>{user["updated_at"]}</td>
+                                    <td>{category["id"]}</td>
+                                    <td>{category["name"]}</td>
+                                    <td>{category["image"]}</td>
+                                    <td>{category["description"]}</td>
+                                    <td>{category["registered_by"]}</td>
+                                    <td>{category["registered at"]}</td>
+                                    <td>{category["updated_at"]}</td>
                                 </tr>))
                         }
                                 

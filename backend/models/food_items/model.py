@@ -9,6 +9,7 @@ class FoodItem(db.Model):
     name:str
     image:str
     description:str
+    in_category:str
     registered_at:str
     
 

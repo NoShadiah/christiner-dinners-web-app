@@ -14,8 +14,9 @@ export function Users() {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
                  }
-          }).then((response) =>response.json() )
-            .then((data)=>{setUsers(data); localStorage.setItem('myUsers', JSON.stringify(data))})
+          })
+          .then((response) =>response.json() )
+          .then((data)=>{setUsers(data); localStorage.setItem('myUsers', JSON.stringify(data))})
             
            
         }

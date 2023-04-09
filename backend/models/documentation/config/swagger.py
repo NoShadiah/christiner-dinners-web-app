@@ -13,7 +13,7 @@ template = {
         "version":"1.0"   
     },
     # This is the base hash for the blue prints registration 
-    "basePath":"api/v1", 
+    "basePath":"", 
     "schemes":[
         "http",
         "https"
