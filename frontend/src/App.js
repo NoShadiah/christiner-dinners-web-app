@@ -11,6 +11,8 @@ import { Gallery } from "./components/gallery/retrieve";
 import { RegisterGalleryItem } from "./components/gallery/register";
 import { RegisterFoodItem } from "./components/food_items/register";
 import { FoodItems } from "./components/food_items/retrieve";
+import { RegisterMenuItem } from "./components/menu/register";
+import { MenuItems } from "./components/menu/retrieve";
 
 
 import "./styling.css"
@@ -100,7 +102,7 @@ const App = () => {
                         {active ==="register user" && <UserRegister/>}
                         {active ==="register food category" && <Registercategory/>}
                         {active ==="register food item" && <RegisterFoodItem/>}
-                        {active ==="register menu item" && <UserRegister/>}
+                        {active ==="register menu item" && <RegisterMenuItem/>}
                         {active ==="register gallery item" && <RegisterGalleryItem/>}
                         {active ==="Add settings" && <UserRegister/>}
                     </div>
@@ -109,7 +111,7 @@ const App = () => {
                         {active === "all users" && <Users/> }
                         {active === "all Food categories" && <Categories/> }
                         {active === "all Food items" && <FoodItems/> }
-                        {active === "all Menu" && <Users/> }
+                        {active === "all Menu" && <MenuItems/> }
                         {active === "all orders" && <Users/> }
                         {active === "all gallery items" && <Gallery/> }
                         {active === "all settings" && <Users/> }

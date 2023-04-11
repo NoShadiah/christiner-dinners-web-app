@@ -90,7 +90,6 @@ def specific_item():
                 return {"message":"successfully added a new menu item", "data": new_item}
             
             return register()
-    
 @menu.route("/item/<id>", methods=["GET", "PUT", "DELETE"])
 # @jwt_required()
 def single_item(id):

@@ -29,8 +29,8 @@ export function Users() {
             
             fetch('http://localhost:5000/api/v2/users/all', {
               headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
+                // ,'Authorization': `Bearer ${token}`
               }
             })
             .then(response => {
