@@ -28,16 +28,17 @@ def get_menu():
         return {"total":len(menuitems), "data":response}
 
 @menu.route("/all", methods=["GET"])
-@jwt_required()
+# @jwt_required()
 def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType == "client":
-        return {"message":"Sorry access denied"}
-    else:
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType == "client":
+    #     return {"message":"Sorry access denied"}
+    # else:
         menuitems = MenuItem.query.all()
         response = [{
+                "id":item.id,
                 "name":item.name,
                 "image":item.image,
                 "description":item.description,
@@ -52,20 +53,21 @@ def get_all():
 
 
 @menu.route("/register", methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def specific_item():
-    # checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType == "client":
-        return {"message":"Sorry access denied"}
-    else:            
+    # # checking the user type
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType == "client":
+    #     return {"message":"Sorry access denied"}
+    # else:            
             def register():
                 name = request.json["name"]
                 image = request.json["image"]
                 description = request.json["description"]
-                registered_by = user_logged_in
+                # registered_by = user_logged_in
+                registered_by = "11"
                 price_unit = "UGX"
                 price = request.json["price"]
                 served_at = request.json["served_at"]
@@ -90,16 +92,16 @@ def specific_item():
             return register()
     
 @menu.route("/item/<id>", methods=["GET", "PUT", "DELETE"])
-@jwt_required()
+# @jwt_required()
 def single_item(id):
-     # checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType == "client":
-        return {"message":"Sorry access denied"}
+    #  # checking the user type
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType == "client":
+    #     return {"message":"Sorry access denied"}
     
-    else:
+    # else:
         item = MenuItem.query.get_or_404(id)
         if request.method == "GET":
                 return {"messgae":f"You successfully retrieved item {id}", "details":item}
@@ -112,9 +114,10 @@ def single_item(id):
                 item.price = request.json["price"]
                 item.served_at = request.json["served_at"]
                 item.category_id = request.json["category_id"]
-                item.upd_by = user_logged_in
+                # item.upd_by = user_logged_in
+                item.upd_by = "11"
                  
-                if not item.name or item.image or item.decription:
+                if not item.name or not item.image or not item.decription:
                      return {"message":"All fields required"}
                 else:
                  

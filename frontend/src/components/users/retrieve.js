@@ -8,19 +8,45 @@ export function Users() {
     useEffect(()=>{
         
         
-        const fetchusers =() =>{
-            fetch('http://localhost:5000/api/v2/users/all',{
-                headers : { 
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json'
-                 }
-          })
-          .then((response) =>response.json() )
-          .then((data)=>{setUsers(data); localStorage.setItem('myUsers', JSON.stringify(data))})
+        // const fetchUsers =() =>{
+        //     const token = localStorage.getItem('access_token');
+        //     fetch('http://localhost:5000/api/v2/users/all',{
+        //         headers : { 
+        //           'Content-Type': 'application/json',
+        //         //   'Accept': 'application/json',
+        //           'Authorization': `Bearer ${token}`
+        //          }
+        //   })
+        //   .then((response) =>response.json() )
+        //   .then((data)=>{setUsers(data); localStorage.setItem('myUsers', JSON.stringify(data))})
+        //   .catch(error=>console.error(error))
             
            
-        }
-        fetchusers();
+        // }
+        // fetchUsers();
+        const fetchUsers = () => {
+            const token = localStorage.getItem('access_token');
+            
+            fetch('http://localhost:5000/api/v2/users/all', {
+              headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              }
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(response.statusText);
+              }
+              return response.json();
+            })
+            .then(data => {
+              setUsers(data);
+              localStorage.setItem('myUsers', JSON.stringify(data));
+            })
+            .catch(error => console.error(error));
+          }
+          
+          fetchUsers();
     }, [])
     console.log("users state:",users)
     // console.log("storageUsers", JSON.parse(localStorage.getItem("myUsers")))
@@ -30,6 +56,7 @@ export function Users() {
                 <div className='list'>
                    <table>
                          <tr className="head">
+                            <th>Id</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
@@ -43,6 +70,7 @@ export function Users() {
                         {
             users?.map(user =>(
                                 <tr className="head">
+                                    <td>{user["Id"]}</td>
                                     <td>{user["First name"]}</td>
                                     <td>{user["Last name"]}</td>
                                     <td>{user["Email"]}</td>

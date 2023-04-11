@@ -32,7 +32,7 @@ export function RegisterGalleryItem(){
             description,
             user_id
         }
-        fetch("http://localhost:5000/api/v2/foodcategories/register", {
+        fetch("http://localhost:5000/api/v2/gallery/register", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",

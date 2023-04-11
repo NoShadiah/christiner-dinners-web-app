@@ -28,12 +28,14 @@ def login():
             validate=check_password_hash(password_hashed, u_password)
             if validate:
                 access_token = create_access_token(identity=user.id) #to make JSON Web Tokens for authentication
-                return {"message":"you successfully logged in", "access token":f"{access_token}"}
+                refresh_token = create_refresh_token(identity=user.id) #to make JSON Web Tokens to refresh authentication
+                return {"access_token":f"{access_token}",
+                        "refresh_token":f"{refresh_token}"}
             else:
                 return "Provided an incorrect password"
         return password()
     else:
-        return "email does not exist"   
+        return "Email does not exist"   
         
 
         
@@ -53,6 +55,7 @@ def all_users():
     # else:
         users = User.query.all()
         response = [{
+            "Id":user.id,
             "First name":user.first_name, 
             "Last name":user.last_name,
             "Email":user.email,

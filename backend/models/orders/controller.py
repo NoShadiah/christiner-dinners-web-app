@@ -12,18 +12,19 @@ orders = Blueprint("orders", __name__, url_prefix="/api/v2/orders")
 
 # client making an order
 @orders.route("/make_order", methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def specific_order():
-    # checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
+    # # checking the user type
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
     
-    if userType != "client":
-        return {"message":"Sorry only registered CLIENTS can make orders, kindly create an account"}
-    else:            
+    # if userType != "client":
+    #     return {"message":"Sorry only registered CLIENTS can make orders, kindly create an account"}
+    # else:            
             def register():
-                made_by = user_logged_in
+                # made_by = user_logged_in
+                made_by = "6"
                 menu_item = request.json["menu_item"]
                 quantity = request.json["quantity"]
 
@@ -60,17 +61,17 @@ def specific_order():
     
 
 @orders.route("/user/orders", methods=["GET"])
-@jwt_required()
+# @jwt_required()
 def get_all():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType != "client":
-        return {"message":"Sorry you have no orders made yet, create an account and make an order"}
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType != "client":
+    #     return {"message":"Sorry you have no orders made yet, create an account and make an order"}
     
-    else:
-        U_orders = Order.query.filter_by(made_by=user_logged_in)
-        
+    # else:
+        # U_orders = Order.query.filter_by(made_by=user_logged_in)
+        U_orders = Order.query.filter_by(made_by=6)
         response = [{
                 "menu_item":order.menu_item,
                 "quantity":order.quantity,
@@ -83,16 +84,17 @@ def get_all():
 
 #for admins to view all orders
 @orders.route("/all", methods=["GET"])
-@jwt_required()
+# @jwt_required()
 def get():
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType == "client" or userType == "customer":
-        return {"message":"Sorry but access denied, you are unauthorized"}
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType == "client" or userType == "customer":
+    #     return {"message":"Sorry but access denied, you are unauthorized"}
     
     orders = Order.query.all()
     response = [{
+            "id":order.id,
             "made_by":order.made_by,
             "menu_item":order.menu_item,
             "quantity":order.quantity,
@@ -106,26 +108,27 @@ def get():
 
 
 @orders.route("/order/<id>", methods=["GET", "PATCH", "DELETE"])
-@jwt_required()
+# @jwt_required()
 def single_order(id):
-     # checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    user_fname = check_user_details.first_name
-    user_lname = check_user_details.last_name
-    user_name = user_fname + " " + user_lname
-    if userType == "client":
-        return {"message":"Sorry access denied"}
+    #  # checking the user type
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # user_fname = check_user_details.first_name
+    # user_lname = check_user_details.last_name
+    # user_name = user_fname + " " + user_lname
+    # if userType == "client":
+    #     return {"message":"Sorry access denied"}
     
-    else:
+    # else:
         order = Order.query.get_or_404(id)
         if request.method == "GET":
                 
                 return {"messgae":f"You successfully retrieved order {id}", "details":order}
         elif request.method == "PATCH":
                 order.status = request.json["status"]
-                order.updated_by = user_name
+                # order.updated_by = user_name
+                order.updated_by = "Mulingi Martin"
                 
                  
                 if not order.status:

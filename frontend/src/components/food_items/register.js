@@ -32,7 +32,7 @@ export function RegisterFoodItem(){
             description,
             user_id
         }
-        fetch("http://localhost:5000/api/v2/foodcategories/register", {
+        fetch("http://localhost:5000/api/v2/fooditems/register", {
         method: "POST", // or 'PUT'
         headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export function RegisterFoodItem(){
 
     return(
         <div id='form1'>
-        <h1>Enter User Details</h1>
+        <h1>Enter Food Item Details</h1>
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Name: </label>

@@ -18,6 +18,7 @@ def get_all():
     # else:
         items = FoodItem.query.all()
         response = [{
+            "id":item.id,
             "name":item.name,
             "image":item.image,
             "description":item .description,
@@ -28,21 +29,22 @@ def get_all():
         return {"total":len(items), "data":response}
 
 @fooditems.route("/register", methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def specific_item():
     # checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType != "super admin":
-        return {"message":"Sorry access denied"}
-    else:            
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType != "super admin":
+    #     return {"message":"Sorry access denied"}
+    # else:            
             def register():
                 name = request.json["name"]
                 image = request.json["image"]
                 description = request.json["description"]
                 category = request.json["category"]
-                registered_by =user_logged_in
+                # registered_by =user_logged_in
+                registered_by = "11"
                 if not name or not image or not description:
                     return {"message":"All fields are required"}
                 
@@ -54,16 +56,16 @@ def specific_item():
             return register()
     
 @fooditems.route("/item/<id>", methods=["GET", "PUT", "DELETE"])
-@jwt_required()
+# @jwt_required()
 def single_item(id):
-     # checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType != "sper admin":
-        return {"message":"Sorry access denied"}
+    #  # checking the user type
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType != "sper admin":
+    #     return {"message":"Sorry access denied"}
     
-    else:
+    # else:
         item = FoodItem.query.get_or_404(id)
         if request.method == "GET":
                 

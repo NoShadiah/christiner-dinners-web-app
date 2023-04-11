@@ -43,6 +43,7 @@ def registercategory():
                 image = request.json["image"]
                 description = request.json["description"]
                 # registered_by = user_logged_in
+                registered_by = "11"
                 if not name or not image or not description:
                     return {"message":"All fields are required"}
                 
@@ -54,16 +55,16 @@ def registercategory():
             return register()
     
 @foodcategories.route("/category/<id>", methods=["GET", "PUT", "DELETE"])
-@jwt_required()
+# @jwt_required()
 def single_category(id):
-    #  checking the user type
-    user_logged_in=get_jwt_identity()
-    check_user_details = User.query.filter_by(id=user_logged_in).first()
-    userType = check_user_details.user_type
-    if userType != "super admin":
-        return {"message":"Sorry access denied"}
+    # #  checking the user type
+    # user_logged_in=get_jwt_identity()
+    # check_user_details = User.query.filter_by(id=user_logged_in).first()
+    # userType = check_user_details.user_type
+    # if userType != "super admin":
+    #     return {"message":"Sorry access denied"}
     
-    else:
+    # else:
         category = FoodCategory.query.get_or_404(id)
         if request.method == "GET":
                 

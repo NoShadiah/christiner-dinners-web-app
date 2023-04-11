@@ -9,13 +9,13 @@ export function FoodItems() {
         
         
         const fetchFoodItems =() =>{
-            fetch('http://localhost:5000/api/v2/foodItems/all',{
+            fetch('http://localhost:5000/api/v2/fooditems/all',{
                 headers : { 
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
                  }
           }).then((response) => response.json())
-            .then((data)=>{setFoodItems(data); localStorage.setItem('myFoodItems', JSON.stringify(data))})
+            .then((data)=>{setFoodItems(data.data); localStorage.setItem('myFoodItems', JSON.stringify(data.data))})
             
            
         }

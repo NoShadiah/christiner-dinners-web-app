@@ -9,13 +9,13 @@ export function Gallery() {
         
         
         const fetchgallery =() =>{
-            fetch('http://localhost:5000/api/v2/foodgallery/all',{
+            fetch('http://localhost:5000/api/v2/gallery/all',{
                 headers : { 
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
                  }
           }).then((response) => response.json())
-            .then((data)=>{setGallery(data); localStorage.setItem('mygallery', JSON.stringify(data))})
+            .then((data)=>{setGallery(data.data); localStorage.setItem('mygallery', JSON.stringify(data.data))})
             
            
         }
@@ -38,15 +38,15 @@ export function Gallery() {
                             <th>Updated at</th>
                         </tr>
                         {
-            gallery?.map(user =>(
+            gallery?.map(galleryItem =>(
                                 <tr className="head">
-                                    <td>{user["id"]}</td>
-                                    <td>{user["name"]}</td>
-                                    <td>{user["image"]}</td>
-                                    <td>{user["description"]}</td>
-                                    <td>{user["registered_by"]}</td>
-                                    <td>{user["registered at"]}</td>
-                                    <td>{user["updated_at"]}</td>
+                                    <td>{galleryItem["id"]}</td>
+                                    <td>{galleryItem["name"]}</td>
+                                    <td>{galleryItem["image"]}</td>
+                                    <td>{galleryItem["description"]}</td>
+                                    <td>{galleryItem["registered_by"]}</td>
+                                    <td>{galleryItem["registered at"]}</td>
+                                    <td>{galleryItem["updated_at"]}</td>
                                 </tr>))
                         }
                                 
