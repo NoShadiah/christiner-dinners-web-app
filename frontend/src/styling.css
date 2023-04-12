@@ -58,3 +58,9 @@
   .section .list table tr td{
     margin-left: 40px;
   }
+
+ .section .list .menuitem, .section .list .fooditem{
+    display: grid; 
+    grid-column: 2;
+    grid-template-columns: 2fr 2fr 2fr ;
+  }  

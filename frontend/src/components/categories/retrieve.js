@@ -47,7 +47,7 @@ export function Categories() {
                                     <td>{category["registered_by"]}</td>
                                     <td>{category["registered at"]}</td>
                                     <td>{category["updated_at"]}</td>
-                                </tr>))
+                                </tr>)) 
                         }
                                 
                                 </table>

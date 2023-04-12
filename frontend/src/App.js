@@ -12,7 +12,9 @@ import { RegisterGalleryItem } from "./components/gallery/register";
 import { RegisterFoodItem } from "./components/food_items/register";
 import { FoodItems } from "./components/food_items/retrieve";
 import { RegisterMenuItem } from "./components/menu/register";
+import { SearchProduct } from "./components/menu/search";
 import { MenuItems } from "./components/menu/retrieve";
+import { Orders } from "./components/orders/retrieve";
 
 
 import "./styling.css"
@@ -62,6 +64,7 @@ const App = () => {
                     <div className="dropdown-content">
                         <button className="btn" onClick={()=>setActive("register menu item")}>Register</button> <br></br>
                         <button className="btn" onClick={()=>setActive("all Menu")}>View all</button> <br></br>
+                        <button className="btn" onClick={()=>setActive("Search item")}>Search item</button> <br></br>
                         <button className="btn" onClick={()=>setActive("update Menu")}>Update</button> <br></br>
                         <button className="btn" onClick={()=>setActive("delete menu item")}>Delete</button> 
                     </div>
@@ -103,6 +106,7 @@ const App = () => {
                         {active ==="register food category" && <Registercategory/>}
                         {active ==="register food item" && <RegisterFoodItem/>}
                         {active ==="register menu item" && <RegisterMenuItem/>}
+                        {active ==="Search item" && <SearchProduct/>}
                         {active ==="register gallery item" && <RegisterGalleryItem/>}
                         {active ==="Add settings" && <UserRegister/>}
                     </div>
@@ -112,7 +116,7 @@ const App = () => {
                         {active === "all Food categories" && <Categories/> }
                         {active === "all Food items" && <FoodItems/> }
                         {active === "all Menu" && <MenuItems/> }
-                        {active === "all orders" && <Users/> }
+                        {active === "all orders" && <Orders/> }
                         {active === "all gallery items" && <Gallery/> }
                         {active === "all settings" && <Users/> }
                     </div>

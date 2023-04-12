@@ -22,8 +22,9 @@ def get_all():
             "name":item.name,
             "image":item.image,
             "description":item .description,
-            "registrered at":item.registered_at,
-            "registerd_by":item.registered_by,
+            "in_category":item.in_category,
+            "registered at":item.registered_at,
+            "registered_by":item.registered_by,
             "updated_at":item.updated_at
     } for item in items]
         return {"total":len(items), "data":response}

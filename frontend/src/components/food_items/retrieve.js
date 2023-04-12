@@ -27,12 +27,39 @@ export function FoodItems() {
             <div className='section'>
                 <h3>A list of my FoodItems</h3>
                 <div className='list'>
-                   <table>
+                {
+            foodItems?.map(fooditem =>(<>
+            <div className="fooditem">
+                                    <div>
+                                        <img src={fooditem["image"]} alt="item image"/>
+                                    </div>
+                                    <div>
+                                            
+                                            <h3>{fooditem["id"]}:{fooditem["name"]}</h3>
+                                            <p>Description: {fooditem["description"]}</p>
+                                            
+                                            <p>Served at: {fooditem["served_at"]}</p>
+                                            <p>Under category: {fooditem["in_category"]}</p> 
+                                            
+                                    </div>
+                                    <div>   <br></br><br></br>
+                                            
+                                            <p>Registered by: {fooditem["registered_by"]}</p>
+                                            <p>Registered at: {fooditem["reg_at"]}</p>
+                                            <p>Updated by: {fooditem["updated_by"]}</p>
+                                            <p>Updated at: {fooditem["updated_at"]}</p>
+                                            
+                                    </div>
+                                    
+                                </div>
+                                <hr></hr></>))}
+                   {/* <table>
                          <tr className="head">
                             <th>Id</th>
                             <th>Name</th>
                             <th>Image</th>
                             <th>Description</th>
+                            <th>Category</th>
                             <th>Registered by</th>
                             <th>Registered at</th>
                             <th>Updated at</th>
@@ -51,7 +78,7 @@ export function FoodItems() {
                                 </tr>))
                         }
                                 
-                                </table>
+                                </table> */}
                     </div>
                 </div>
         )

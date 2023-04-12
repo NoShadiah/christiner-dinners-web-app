@@ -34,7 +34,7 @@ def specific_order():
                 item_price = menu_item_filtering.price
                 # getting and rounding off the grand total of the order
                 total = str(math.floor(int(quantity*item_price)))
-                order_grand_total = total
+                order_grand_total = request.json["grand_total"]
                 
 
                 delivery_address = request.json["delivery_address"]
@@ -101,7 +101,9 @@ def get():
             "delivery_address":order.delivery_address,
             "made_at":order.made_at,
             "needed_by":order.needed_by,
-            "status":order.status
+            "status":order.status,
+            "updated_by":order.updated_by,
+            "updated_at": order.updated_at
     } for order in orders]
     return jsonify({"total":len(orders), "data":response})
  
@@ -128,7 +130,7 @@ def single_order(id):
         elif request.method == "PATCH":
                 order.status = request.json["status"]
                 # order.updated_by = user_name
-                order.updated_by = "Mulingi Martin"
+                order.updated_by = "Mulungi Martin"
                 
                  
                 if not order.status:

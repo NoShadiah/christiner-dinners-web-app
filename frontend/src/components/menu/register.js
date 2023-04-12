@@ -52,6 +52,9 @@ export function RegisterMenuItem(){
             name,
             image,
             description,
+            price,
+            served_at,
+            category_id:category,
             user_id
         }
         fetch("http://localhost:5000/api/v2/menu/register", {

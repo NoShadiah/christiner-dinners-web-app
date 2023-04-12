@@ -46,8 +46,10 @@ def get_all():
                 "price":item.price,
                 "served_at":item.served_at,
                 "category":item.category_id,
+                "registered_by":item.registered_by,
                 "reg_at":item.reg_at,
-                "updated":item.upd_at
+                "updated_by": item.updated_by,
+                "updated_at":item.upd_at
         } for item in menuitems]
         return {"total":len(menuitems), "data":response}
 
