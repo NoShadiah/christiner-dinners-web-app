@@ -78,7 +78,7 @@ export function MenuItems() {
                                             <p>Updated at: {menuItem["updated_at"]}</p>
                                             
                                     </div>
-                                    <button onClick={()=><DeleteItem/>}></button>
+                                    <button onClick={()=><DeleteItem Id={item}/>}>Delete</button>
                                     
                     </div>
                </div>

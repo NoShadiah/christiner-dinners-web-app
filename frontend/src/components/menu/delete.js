@@ -14,5 +14,10 @@ export function DeleteItem(props){
             }).then((response)=> response.json())
             .then((info)=>{setMessage(info.message); localStorage.setItem('my menu item', JSON.stringify(info))})
         }
-        DeleteProduct()
-},[])}
+        DeleteProduct();
+    },[])
+    return(
+        alert(message)
+    )
+}
+    
