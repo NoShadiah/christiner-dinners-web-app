@@ -30,7 +30,8 @@ def login():
                 access_token = create_access_token(identity=user.id) #to make JSON Web Tokens for authentication
                 refresh_token = create_refresh_token(identity=user.id) #to make JSON Web Tokens to refresh authentication
                 return {"access_token":f"{access_token}",
-                        "refresh_token":f"{refresh_token}"}
+                        "refresh_token":f"{refresh_token}",
+                        "user_type":user.user_type}
             else:
                 return "Provided an incorrect password"
         return password()

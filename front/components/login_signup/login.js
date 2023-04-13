@@ -37,6 +37,7 @@ export function Login(){
                 // setIsLoggedIn(true);
                 localStorage.setItem('access_token', JSON.stringify(data.access_token));
                 localStorage.setItem('refresh_token', JSON.stringify(data.refresh_token));
+                localStorage.setItem('user_type', JSON.stringify(data.user_type));
             }
             
 

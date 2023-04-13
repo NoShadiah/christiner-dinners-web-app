@@ -21,7 +21,7 @@ import "./styling.css"
 
 
 
-const App = () => {
+export const Dashboard = () => {
     const [active, setActive] = useState("");
     
     
@@ -132,5 +132,3 @@ const App = () => {
 
     
 }
-
-export default App
