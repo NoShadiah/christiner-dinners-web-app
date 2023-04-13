@@ -56,7 +56,7 @@ export function Orders() {
                                 </tr>))
                         }
                                 
-                                </table>
+                   </table>
                     </div>
                 </div>
         )
