@@ -20,4 +20,3 @@ export function DeleteItem(props){
         alert(message)
     )
 }
-    
