@@ -57,7 +57,7 @@ export function Registercategory(){
 
     return(
         <div id='form1'>
-        <h1>Enter User Details</h1>
+        <h1>Enter Catgeory Details</h1>
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Name: </label>

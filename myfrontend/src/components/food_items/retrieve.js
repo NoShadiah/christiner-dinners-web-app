@@ -6,8 +6,6 @@ export function FoodItems() {
     // Fecth FoodItems
     const[foodItems, setFoodItems] = useState([])
     useEffect(()=>{
-        
-        
         const fetchFoodItems =() =>{
             fetch('http://localhost:5000/api/v2/fooditems/all',{
                 headers : { 
@@ -16,8 +14,6 @@ export function FoodItems() {
                  }
           }).then((response) => response.json())
             .then((data)=>{setFoodItems(data.data); localStorage.setItem('myFoodItems', JSON.stringify(data.data))})
-            
-           
         }
         fetchFoodItems();
     }, [])
@@ -33,24 +29,19 @@ export function FoodItems() {
                                     <div>
                                         <img src={fooditem["image"]} alt="item image"/>
                                     </div>
-                                    <div>
-                                            
+                                    <div>                               
                                             <h3>{fooditem["id"]}:{fooditem["name"]}</h3>
                                             <p>Description: {fooditem["description"]}</p>
                                             
                                             <p>Served at: {fooditem["served_at"]}</p>
                                             <p>Under category: {fooditem["in_category"]}</p> 
-                                            
                                     </div>
                                     <div>   <br></br><br></br>
-                                            
                                             <p>Registered by: {fooditem["registered_by"]}</p>
                                             <p>Registered at: {fooditem["reg_at"]}</p>
                                             <p>Updated by: {fooditem["updated_by"]}</p>
                                             <p>Updated at: {fooditem["updated_at"]}</p>
-                                            
                                     </div>
-                                    
                                 </div>
                                 <hr></hr></>))}
                    {/* <table>
@@ -77,7 +68,6 @@ export function FoodItems() {
                                     <td>{fooditem["updated_at"]}</td>
                                 </tr>))
                         }
-                                
                                 </table> */}
                     </div>
                 </div>

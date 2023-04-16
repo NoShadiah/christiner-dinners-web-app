@@ -5,13 +5,9 @@ import "./App.css"
 
 import { UserRegister } from "./components/users/register";
 
-import { Categories } from "./components/categories/retrieve";
-import { Registercategory } from "./components/categories/register";
+
 import { Gallery } from "./components/gallery/retrieve";
-import { RegisterGalleryItem } from "./components/gallery/register";
-import { RegisterFoodItem } from "./components/food_items/register";
-import { FoodItems } from "./components/food_items/retrieve";
-import { RegisterMenuItem } from "./components/menu/register";
+
 import { SearchProduct } from "./components/menu/search";
 import { MenuItems } from "./components/menu/retrieve";
 import { Orders } from "./components/orders/retrieve";
@@ -30,8 +26,7 @@ export const UserMenu = () => {
             
              
             <div id="dashboard">
-                <div>
-                <button onClick={()=>setActive("Login")}>Login</button> <br></br>
+                
                 
                 <div className="dropdown">
                     <p className="dropbtn">Menu</p>
@@ -59,7 +54,7 @@ export const UserMenu = () => {
                     </div>
                 </div><br></br>
                 
-                </div>
+                
                 
                 
                 

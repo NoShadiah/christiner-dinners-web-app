@@ -4,7 +4,7 @@ import "./App.css"
 
 import { Users } from "./components/users/retrieve";
 import { UserRegister } from "./components/users/register";
-import { Login } from "./components/login_signup/login"
+
 import { Categories } from "./components/categories/retrieve";
 import { Registercategory } from "./components/categories/register";
 import { Gallery } from "./components/gallery/retrieve";
@@ -31,7 +31,6 @@ export const Dashboard = () => {
              
             <div id="dashboard">
                 <div>
-                <button onClick={()=>setActive("Login")}>Login</button> <br></br>
                 <div className="dropdown">
                     <p className="dropbtn">Users</p>
                     <div className="dropdown-content">
@@ -100,6 +99,8 @@ export const Dashboard = () => {
                 
                 
                 
+                
+                
                 <div id="content_section">
                     <div>
                         {active ==="register user" && <UserRegister/>}
@@ -111,7 +112,7 @@ export const Dashboard = () => {
                         {active ==="Add settings" && <UserRegister/>}
                     </div>
                     <div>
-                        {active === "Login" && <Login/> }
+                        
                         {active === "all users" && <Users/> }
                         {active === "all Food categories" && <Categories/> }
                         {active === "all Food items" && <FoodItems/> }

@@ -1,0 +1,13 @@
+#nav{
+    align-items: center;
+    margin-left: 160px;
+
+}
+
+#item{
+    color: rgb(255, 255, 255);
+    /* justify-content: space-around; */
+    text-decoration: none;
+    padding: 20px 20px 20px 20px;
+    
+}

@@ -92,6 +92,12 @@ def specific_item():
                 return {"message":"successfully added a new menu item", "data": new_item}
             
             return register()
+
+@menu.route('/served_at/<served_at>', methods=["GET"])
+def meals_served_at(served_at):
+    #    filtering the menu items model for the items served at that specific time
+    filter = MenuItem.query.filter_by()
+
 @menu.route("/item/<id>", methods=["GET", "PUT", "DELETE"])
 # @jwt_required()
 def single_item(id):
