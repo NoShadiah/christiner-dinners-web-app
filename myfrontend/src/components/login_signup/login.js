@@ -50,6 +50,8 @@ export function Login(){
     const handleSubmit = (event) =>{
         event.preventDefault();
         UserLogin()
+        setEmail("");
+        setPassword("");
         // console.log("Your password is",password+"!?23%4"+email+"!&")
     }
     return(

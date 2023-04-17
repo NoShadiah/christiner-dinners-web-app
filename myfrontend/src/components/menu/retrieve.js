@@ -112,6 +112,7 @@ export function MenuItems() {
             <div className='section'>
                 <h3>A list of my menu Items</h3>
                 <div className='list'>
+                
                 {
             menuItems?.map(menuitem =>(<>
             <div className="menuitem">
