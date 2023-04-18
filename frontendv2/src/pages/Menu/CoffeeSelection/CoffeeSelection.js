@@ -1,49 +1,72 @@
 import React from "react";
 
 import "./CoffeeSelection.css";
-
+import {useEffect, useState} from "react";
 import ListItem from "../../../components/ListItem/ListItem";
 import coffeeImage from "../../../assets/coffee-items.jpg";
 
-const menuDataRight = [
-  {
-    title: "Low Carb CoffeeSelection",
-    description: "grilled chicken breast with veggies",
-    price: 13,
-  },
-  {
-    title: "Bagel",
-    description: "with salmon, cream cheese and salsa",
-    price: 8.5,
-  },
-  {
-    title: "American Pancakes",
-    description: "with chocolate  sauce or maple syrup, honey and cream",
-    price: 21,
-  },
-  {
-    title: "Low Carb CoffeeSelection",
-    description: "grilled chicken breast with veggies",
-    price: 13,
-  },
-  {
-    title: "Bagel",
-    description: "with salmon, cream cheese and salsa",
-    price: 8.5,
-  },
-  {
-    title: "American Pancakes",
-    description: "with chocolate  sauce or maple syrup, honey and cream",
-    price: 21,
-  },
-  {
-    title: "Low Carb CoffeeSelection",
-    description: "grilled chicken breast with veggies",
-    price: 13,
-  },
-];
+// const menuDataRight = [
+//   {
+//     title: "Low Carb CoffeeSelection",
+//     description: "grilled chicken breast with veggies",
+//     price: 13,
+//   },
+//   {
+//     title: "Bagel",
+//     description: "with salmon, cream cheese and salsa",
+//     price: 8.5,
+//   },
+//   {
+//     title: "American Pancakes",
+//     description: "with chocolate  sauce or maple syrup, honey and cream",
+//     price: 21,
+//   },
+//   {
+//     title: "Low Carb CoffeeSelection",
+//     description: "grilled chicken breast with veggies",
+//     price: 13,
+//   },
+//   {
+//     title: "Bagel",
+//     description: "with salmon, cream cheese and salsa",
+//     price: 8.5,
+//   },
+//   {
+//     title: "American Pancakes",
+//     description: "with chocolate  sauce or maple syrup, honey and cream",
+//     price: 21,
+//   },
+//   {
+//     title: "Low Carb CoffeeSelection",
+//     description: "grilled chicken breast with veggies",
+//     price: 13,
+//   },
+// ];
+
+
 
 const CoffeeSelection = () => {
+
+  
+  const[menuDataRight, setmenuItems] = useState([])
+    
+  useEffect(()=>{
+      
+      
+      const fetchMenuItems =() =>{
+          fetch("http://localhost:5000/api/v2/menu/clients_view",{
+              headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               }
+        }).then((response) => response.json())
+          .then((data)=>{ setmenuItems(data.Items); localStorage.setItem('MyMenuItems', JSON.stringify(data.Items))})
+          
+         
+      }
+      fetchMenuItems();
+  }, [])
+
   return (
     <div className="container coffee-selection">
       <h1 className="heading-secondary">
@@ -61,6 +84,7 @@ const CoffeeSelection = () => {
               title={data.title}
               description={data.description}
               price={data.price}
+              itemImage={data.image}
             />
           ))}
         </div>
