@@ -105,7 +105,7 @@ export function UsersMenu() {
             
             <div className='section'>
                 <h3>A list of my menu Items</h3>
-                <div className='menulist'>
+                <div className='list'>
                 
                             {
                         menuItems?.map(menuitem =>(<>
@@ -115,11 +115,11 @@ export function UsersMenu() {
                                                 </div>
                                                 <div>
                                                         
-                                                        <h3>{menuitem["id"]}:{menuitem["name"]}</h3>
+                                                        <h3>{menuitem["name"]}</h3>
                                                         <p>Description: {menuitem["description"]}</p>
                                                         <h4>Price: {menuitem["price_unit"]} {menuitem["price"]}</h4>
                                                         <p>Served at: {menuitem["served_at"]}</p>
-                                                        <p>Under category: {menuitem["category"]}</p> 
+                                                         
                                                         
                                                 </div>
                                                <br></br><br></br>

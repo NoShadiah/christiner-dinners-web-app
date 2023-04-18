@@ -36,20 +36,20 @@ export const Menu = () => {
                         <button className="btn" onClick={()=>setActive("Search item")}>Search item</button> <br></br>
                         
                     </div>
-                </div><br></br>
+                </div>
                 <div className="dropdown">
-                    <p className="dropbtn">Orders</p>
-                    <div className="dropdown-content">
-                        <button className="btn" onClick={()=>setActive("all orders")}>View all</button> <br></br>
-                        <button className="btn" onClick={()=>setActive("delivered orders")}>Delivered</button> <br></br>
+                    {/* <p className="dropbtn">Orders</p> */}
+                    <div className="dropbtn">
+                        <button className="btn" onClick={()=>setActive("all orders")}>My order</button> <br></br>
+                        {/* <button className="btn" onClick={()=>setActive("delivered orders")}>Delivered</button> <br></br> */}
                          
                     </div>
-                </div><br></br>
+                </div>
                 <div className="dropdown">
-                    <p className="dropbtn">Gallery</p>
-                    <div className="dropdown-content">
+                    {/* <p className="dropbtn">Gallery</p> */}
+                    <div className="dropbtn">
 
-                        <button className="btn" onClick={()=>setActive("all gallery items")}>View all</button> <br></br>
+                        <button className="btn" onClick={()=>setActive("all gallery items")}>Gallery</button> <br></br>
                         
                     </div>
                 </div><br></br>
