@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./CoffeeSelection.css";
+import "../LunchTime/LunchTime.css"
 import {useEffect, useState} from "react";
 import ListItem from "../../../components/ListItem/ListItem";
 import coffeeImage from "../../../assets/coffee-items.jpg";
@@ -81,11 +82,17 @@ const CoffeeSelection = () => {
         <div>
           {menuDataRight.map((data, i) => (
             <ListItem
-              title={data.title}
+              title={data.name}
               description={data.description}
               price={data.price}
               itemImage={data.image}
             />
+            // <div>
+            //   <p>{data.name}</p>
+            //   <p>{data.description}</p>
+            //   <span>{data.price}</span>
+            //   <img src={data.image}/>
+            // </div>
           ))}
         </div>
       </div>
