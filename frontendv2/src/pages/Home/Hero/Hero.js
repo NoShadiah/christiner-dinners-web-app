@@ -7,13 +7,13 @@ const Hero = () => {
     <div className='hero-img container'>
         <div className='hero-content'>
             <h1 className='heading-primary'>
-                <span>welcome</span> to restaurant
+                <span>welcome</span> to NAVZ Restaurant
             </h1>
 
-            <p className='text-white'>The best gourmet restaurant available in Manhatten</p>
+            <p className='text-white'>The best convinient restaurant available in Kampala</p>
 
             <p className='text-white'>
-                Book online or call <span className='special-word'>(555)123-4567</span>
+                Book, Order online or call <span className='special-word'>070-123-4567</span>
             </p>
         </div>
     </div>
