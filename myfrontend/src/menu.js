@@ -9,7 +9,7 @@ import { UserRegister } from "./components/users/register";
 import { Gallery } from "./components/gallery/retrieve";
 
 import { SearchProduct } from "./components/menu/search";
-import { MenuItems } from "./components/menu/retrieve";
+import { UsersMenu } from "./components/menu/Usersmenu";
 import { Orders } from "./components/orders/retrieve";
 
 
@@ -17,7 +17,7 @@ import "./styling.css"
 
 
 
-export const UserMenu = () => {
+export const Menu = () => {
     const [active, setActive] = useState("");
     
     
@@ -67,7 +67,7 @@ export const UserMenu = () => {
                     <div>
                         
                     
-                        {active === "all Menu" && <MenuItems/> }
+                        {active === "all Menu" && <UsersMenu/> }
                         {active === "all orders" && <Orders/> }
                         {active === "all gallery items" && <Gallery/> }
                         

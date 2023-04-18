@@ -25,7 +25,7 @@ def get_menu():
                 "price":item.price,
                 "served_at":item.served_at
         } for item in menuitems]
-        return {"total":len(menuitems), "data":response}
+        return {"total":len(menuitems), "Items":response}
 
 @menu.route("/all", methods=["GET"])
 # @jwt_required()

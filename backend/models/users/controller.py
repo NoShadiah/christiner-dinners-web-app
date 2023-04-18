@@ -44,16 +44,16 @@ def login():
 
 #get all users
 @users.route("/all")
-# @jwt_required()
+@jwt_required()
 def all_users():
-    # user_logged_in=get_jwt_identity()
-    # check_user_details = User.query.filter_by(id=user_logged_in).first()
-    # userType = check_user_details.user_type
-    # if userType == "client" or userType == "customer":
-    #     return {"message":"Sorry but access denied, you are unauthorized"}
+    user_logged_in=get_jwt_identity()
+    check_user_details = User.query.filter_by(id=user_logged_in).first()
+    userType = check_user_details.user_type
+    if userType == "client" or userType == "customer":
+        return {"message":"Sorry but access denied, you are unauthorized"}
     
 
-    # else:
+    else:
         users = User.query.all()
         response = [{
             "Id":user.id,

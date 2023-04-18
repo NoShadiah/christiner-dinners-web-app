@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import { DeleteItem } from "./delete";
 
-export function MenuItems() {
+export function UsersMenu() {
     
 
     // Fecth menuItems
@@ -11,13 +11,13 @@ export function MenuItems() {
         
         
         const fetchMenuItems =() =>{
-            fetch('http://localhost:5000/api/v2/menu/all',{
+            fetch("http://localhost:5000/api/v2/menu/clients_view",{
                 headers : { 
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
                  }
           }).then((response) => response.json())
-            .then((data)=>{setmenuItems(data.data); localStorage.setItem('MyMenuItems', JSON.stringify(data.data))})
+            .then((data)=>{setmenuItems(data.Items); localStorage.setItem('MyMenuItems', JSON.stringify(data.Items))})
             
            
         }
@@ -67,18 +67,12 @@ export function MenuItems() {
                                             <p>Description: {menuItem["description"]}</p>
                                             <h4>Price: {menuItem["price_unit"]} {menuItem["price"]}</h4>
                                             <p>Served at: {menuItem["served_at"]}</p>
-                                            <p>Under category: {menuItem["category"]}</p> 
+                                            
+                                             
                                             
                                     </div>
-                                    <div>   <br></br><br></br>
-                                            
-                                            <p>Registered by: {menuItem["registered_by"]}</p>
-                                            <p>Registered at: {menuItem["reg_at"]}</p>
-                                            <p>Updated by: {menuItem["updated_by"]}</p>
-                                            <p>Updated at: {menuItem["updated_at"]}</p>
-                                            
-                                    </div>
-                                    <button onClick={()=><DeleteItem Id={item}/>}>Delete</button>
+                                    
+                                    
                                     
                     </div>
                </div>
@@ -128,14 +122,9 @@ export function MenuItems() {
                                                         <p>Under category: {menuitem["category"]}</p> 
                                                         
                                                 </div>
-                                                <div>   <br></br><br></br>
+                                               <br></br><br></br>
                                                         
-                                                        <p>Registered by: {menuitem["registered_by"]}</p>
-                                                        <p>Registered at: {menuitem["reg_at"]}</p>
-                                                        <p>Updated by: {menuitem["updated_by"]}</p>
-                                                        <p>Updated at: {menuitem["updated_at"]}</p>
                                                         
-                                                </div>
                                                 
                                             </div>
                                             <hr></hr></>))}
