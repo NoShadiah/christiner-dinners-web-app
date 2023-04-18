@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./AmazingMeal.css";
 
@@ -16,13 +16,23 @@ import "slick-carousel/slick/slick-theme.css";
 import { BsFillStarFill } from "react-icons/bs";
 
 const AmazingMeal = () => {
-  const [items, setItems] = useState([
-    { id: 1, url: image1 },
-    { id: 2, url: image2 },
-    { id: 3, url: image3 },
-    { id: 4, url: image4 },
-    { id: 5, url: image5 },
-  ]);
+  const[items, setItems] = useState([])
+    useEffect(()=>{
+        
+        
+        const fetchcategories =() =>{
+            fetch('http://localhost:5000/api/v2/foodcategories/all',{
+                headers : { 
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                 }
+          }).then((response) => response.json())
+            .then((data)=>{setItems(data); localStorage.setItem('mycategories', JSON.stringify(data))})
+            
+           
+        }
+        fetchcategories();
+    }, [])
 
   const settings = {
     dots: true,
@@ -43,7 +53,7 @@ const AmazingMeal = () => {
               <Slider {...settings}>
                 {items.map((item) => (
                   <div key={item.id}>
-                    <img src={item.url} alt="caurosal pic" />
+                    <img src={item.image} alt="caurosal pic" />
                   </div>
                 ))}
               </Slider>

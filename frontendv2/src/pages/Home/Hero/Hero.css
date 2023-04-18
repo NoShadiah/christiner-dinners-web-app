@@ -1,10 +1,12 @@
 .hero-img {
-    height: 100vh;
-    background-image: url('../../../assets/pasta.jpg');
+    height: 120vh;
+    /* background-image: url('https://tinyurl.com/5n7t94bc'); */
+    background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://tinyurl.com/5n7t94bc');
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
     position: relative;
+    
 }
 
 .hero-content {
