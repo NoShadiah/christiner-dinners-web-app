@@ -26,7 +26,7 @@ export function LoginForm(props) {
                         <div>
                             <label>Email</label>
                             <input type="email" name='email' />
-                        </div>
+                        </div><br></br>
 
                         <div>
                             <label>Password</label>
