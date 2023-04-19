@@ -21,7 +21,7 @@ const Navbar = () => {
   }
 
   window.addEventListener("scroll", changeColor);
-  const [condition, setCondition] = useState("0")
+  const [condition, setCondition] = useState("2")
   const handleClick = () => {
     setClick(!click)
   }
@@ -40,7 +40,6 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-
             {
               condition === "0" &&<>
                     <li onClick={handleClick}>
@@ -92,7 +91,7 @@ const Navbar = () => {
             </li>
               </>
             }{
-              condition === userType ==="super admin" &&
+              condition === "3" || userType ==="super admin" &&
               <>
                 <li onClick={handleClick}>
                 <button>
@@ -103,7 +102,7 @@ const Navbar = () => {
                 </li>
               </>
             }
-            {userType}
+            
           </ul>
 
           <div className="hamburger" onClick={handleClick}>

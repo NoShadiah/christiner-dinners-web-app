@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import "./App.css"
+import "./styling.css"
 
 import { Users } from "./components/users/retrieve";
 import { UserRegister } from "./components/users/register";
