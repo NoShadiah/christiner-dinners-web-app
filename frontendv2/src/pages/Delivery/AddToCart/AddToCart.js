@@ -66,7 +66,7 @@ const AddToCart = () => {
   return (
     <div className="container add-to-cart">
       <h1 className="heading-secondary">
-        <span>click </span> to add to cart
+        <span>Sign Up/ Login</span> to add to cart
       </h1>
 
       <div className="grid-container">
@@ -96,10 +96,10 @@ const AddToCart = () => {
 
             <div className="addtocart-btn">
                 <h1 className="heading-secondary">
-                    <span>are you </span> done?
+                    <span> <button>LogIn/Signup</button></span> 
                 </h1>
 
-                <button>show cart & checkout</button>
+                
             </div>
 
     </div>

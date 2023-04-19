@@ -72,20 +72,14 @@ const AmazingMeal = () => {
             <h4>We hope to see you soon!</h4>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-              sem.
+              Door always open for those that wish to enjoy the cool breeze at the NAVZs HQ
               <br />
               <br />
-              Venenatis vitae, justo. Nullam dictum felis eu pede mollis
-              pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper
-              nisi. Aenean vulputate eleifend tellus. sem.
+              To my french friends: "La porte est toujours ouverte pour ceux qui souhaitent profiter de la brise fraîche au siège de NAVZs."
             </p>
 
             <blockquote>
-              Nulla consequat massa quis enim. Doncus ut, imperdiet a.
+              Come one com all, rather the E.A'can way "Karibuni wote"
             </blockquote>
           </div>
         </div>
@@ -103,8 +97,9 @@ const AmazingMeal = () => {
               </div>
 
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor.
+                We've got the best and healthy ingredients for you comfy and deliciouso meal. Our meals are simple but mind blowing.
+
+                Our kenyan chef says: "Chakula chetu ni cha kawaida lakini kinachovutia akili."
               </p>
             </div>
           </div>
@@ -116,13 +111,30 @@ const AmazingMeal = () => {
               <div className="amazing-card-title">
                 <BsFillStarFill color="#c3512f" />
                 <h3 className="heading-tertiary">
-                  <span>reservations</span>
+                  <span> orders and reservations</span>
                 </h3>
               </div>
 
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor.
+                All this can be made with in no time, and to maintain a good customer relationship, we are able to give you immediate feedback
+              </p>
+            </div>
+          </div>
+          <div className="amazing-card amazing-card-left">
+            <img src={image1} alt="burger" className="amazing-card-image" />
+
+            <div className="amazing-card-content">
+              <div className="amazing-card-title">
+                <BsFillStarFill color="#c3512f" />
+                <h3 className="heading-tertiary">
+                  the best <span>ingredients</span>
+                </h3>
+              </div>
+
+              <p>
+                We've got the best and healthy smoothies. Our smoothies are simple but mind soothing and thirst quenghing.
+
+                Our spanish team credits: "Nuestros batidos son simples pero relajantes y saciantes para la sed."
               </p>
             </div>
           </div>

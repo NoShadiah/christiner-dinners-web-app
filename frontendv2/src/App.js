@@ -5,11 +5,15 @@ import Menu from './pages/Menu/Menu'
 import Delivery from './pages/Delivery/Delivery'
 import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
+import { LoginForm } from './pages/Home/login/login'
+import { SignUpForm } from './pages/Home/signup/signup'
+import { }
 
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
 function App() {
+  const [condition, setCondition]
   return (
     <div>
       <Navbar />
@@ -19,6 +23,8 @@ function App() {
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<LoginForm/>}/>
+        <Route path="/signup" element={<SignUpForm/>}/>
       </Routes>
       <Footer />
     </div>
