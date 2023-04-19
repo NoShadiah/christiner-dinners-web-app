@@ -1,0 +1,63 @@
+import { useState, useEffect } from "react";
+
+const[item, setItem] = useState()
+const[menuItem, setMenuItem] = useState()
+
+const ChangeItem=(e)=>{
+    setItem(e.target.value)
+   
+    console.log(item)
+
+}
+// Getting a specific item
+useEffect(()=>{
+    const singleProduct =() => {
+        const myURL = 'http://localhost:5000/api/v2/menu/item/'+ item 
+        const NoSpaces = myURL.replace(/ /g, " ");
+        fetch(NoSpaces, {
+            methods:'PUT ',
+            headers:{
+                'Content-Type':'application/json'
+            }
+        }).then((response)=> response.json())
+        .then((info)=>{setMenuItem(info.details); localStorage.setItem('my menu item', JSON.stringify(info))})
+    }
+  singleProduct();
+},[item])
+
+const OneItem=()=>{
+    if (!menuItem) {
+        return <p>Loading...</p>;
+      }
+    return (
+        <>
+        <div classnmae='section'>
+           <div className="list">
+                <div className="menuitem">
+                                <div>
+                                    <img src={menuItem["image"]} alt="Item image"/>
+                                </div>
+                                <div>
+                                        
+                                        <h3>{menuItem["id"]}:{menuItem["name"]}</h3>
+                                        <p>Description: {menuItem["description"]}</p>
+                                        <h4>Price: {menuItem["price_unit"]} {menuItem["price"]}</h4>
+                                        <p>Served at: {menuItem["served_at"]}</p>
+                                        <p>Under category: {menuItem["category"]}</p> 
+                                        
+                                </div>
+                                <div>   <br></br><br></br>
+                                        
+                                        <p>Registered by: {menuItem["registered_by"]}</p>
+                                        <p>Registered at: {menuItem["reg_at"]}</p>
+                                        <p>Updated by: {menuItem["updated_by"]}</p>
+                                        <p>Updated at: {menuItem["updated_at"]}</p>
+                                        
+                                </div>
+                                <button onClick={()=><DeleteItem Id={item}/>}>Delete</button>
+                                
+                </div>
+           </div>
+    </div></>
+    )
+}
