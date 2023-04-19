@@ -4,7 +4,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="section footer">
+    <div className="sectionfooter">
       <div className="container">
         <div className="grid-container">
           <div className="footer-grid-item">

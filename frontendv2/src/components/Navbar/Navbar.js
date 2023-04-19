@@ -10,6 +10,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [color, setColor] = useState(false);
+  const userType = localStorage.getItem('user_type'); 
 
   const changeColor = () => {
     if(window.scrollY >= 100) {
@@ -41,16 +42,14 @@ const Navbar = () => {
             </li>
 
             {
-              condition === "0" && 
-              <li onClick={handleClick}>
+              condition === "0" &&<>
+                    <li onClick={handleClick}>
               <button>
                 <NavLink className="nav-link" to="/login">
                   LogIn
                 </NavLink>
               </button>
-            </li>}
-            { 
-            condition ==="0" &&
+            </li>
             <li onClick={handleClick}>
               <button>
                 <NavLink className="nav-link" to="/signup">
@@ -58,6 +57,8 @@ const Navbar = () => {
                 </NavLink>
               </button>
             </li>
+              </> 
+              
             }
             {
               condition === "1" &&

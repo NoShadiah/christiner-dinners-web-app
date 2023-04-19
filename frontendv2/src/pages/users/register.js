@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import "./signup.css";
-
-export function SignUpForm(props){
+// import APIService from "./posting";
+// Number 1
+export function UserRegister(props){
     const [firstname, setFirstName]=useState("");
     const [lastname, setLastName]=useState("");
     const [email, setEmail]=useState("");
@@ -102,11 +102,9 @@ export function SignUpForm(props){
     
     return(
         <div id='form1'>
-            <p>NAVZonline</p>
+            <h1>Enter User Details</h1>
             <form onSubmit={handleSubmit}>
-            
                 <div>
-                <h1>Trust and SignUp with NAVZs</h1>
                     <label>First name: </label>
                     <input 
                     type='text'
@@ -167,7 +165,7 @@ export function SignUpForm(props){
                 </div>
                 <div>
                     <button >Submit</button>
-                    <p>Submit form the form and hit the Signup button to access your account</p>
+                    <p>Submit form the form and hit the save button to Save the user</p>
                 </div>
             </form>
 

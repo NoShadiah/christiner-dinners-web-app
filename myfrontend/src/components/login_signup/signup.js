@@ -165,7 +165,7 @@ export function UserRegister(props){
                 </div>
                 <div>
                     <button >Submit</button>
-                    <p>Submit form the form and hit the save button to Save the user</p>
+                    <p>Submit form the form and hit the Signup button to access your account</p>
                 </div>
             </form>
 
