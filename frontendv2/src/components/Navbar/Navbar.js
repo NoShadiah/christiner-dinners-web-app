@@ -57,8 +57,7 @@ const Navbar = () => {
                 </NavLink>
               </button>
             </li>
-              </> 
-              
+              </>   
             }
             {
               condition === "1" &&
