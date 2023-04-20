@@ -8,6 +8,9 @@ import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
 import { LoginForm } from './pages/Home/login/login'
 import { SignUpForm } from './pages/Home/signup/signup'
+import { }
+
+import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
 

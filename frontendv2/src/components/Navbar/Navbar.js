@@ -10,6 +10,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [color, setColor] = useState(false);
+  const [userType,setUserType] = useState(localStorage.getItem('user_type')); 
 
   const changeColor = () => {
     if(window.scrollY >= 100) {
@@ -20,7 +21,7 @@ const Navbar = () => {
   }
 
   window.addEventListener("scroll", changeColor);
-
+  const [condition, setCondition] = useState("2")
   const handleClick = () => {
     setClick(!click)
   }
@@ -39,7 +40,28 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
+            {
+              condition === "0" &&<>
+                    <li onClick={handleClick}>
+              <button>
+                <NavLink className="nav-link" to="/login">
+                  LogIn
+                </NavLink>
+              </button>
+            </li>
             <li onClick={handleClick}>
+              <button>
+                <NavLink className="nav-link" to="/signup">
+                  SignUp
+                </NavLink>
+              </button>
+            </li>
+              </>   
+            }
+            {
+              condition === "1" &&
+              <>
+                  <li onClick={handleClick}>
               <NavLink className="nav-link" to="/menu">
                 Menu
               </NavLink>
@@ -66,18 +88,25 @@ const Navbar = () => {
 
             <li onClick={handleClick}>
               <button>
-                <NavLink className="nav-link" to="/login">
-                  LogIn
-                </NavLink>
-              </button>
-            </li>
-            <li onClick={handleClick}>
-              <button>
                 <NavLink className="nav-link" to="/signup">
-                  SignUp
+                  Logout
                 </NavLink>
               </button>
             </li>
+              </>
+            }{
+              condition === "3" || userType ==="super admin" &&
+              <>
+                <li onClick={handleClick}>
+                <button>
+                  <NavLink className="nav-link" to="/signup">
+                    Dashboard
+                  </NavLink>
+                </button>
+                </li>
+              </>
+            }
+            
           </ul>
 
           <div className="hamburger" onClick={handleClick}>

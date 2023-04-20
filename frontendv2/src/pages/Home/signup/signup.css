@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 input{
     height: 25px;
   width: 250px; ;
@@ -8,4 +9,14 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+=======
+form{
+    background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://tinyurl.com/5n7t94bc');
+    background-repeat: no-repeat;
+    width: 40%;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+>>>>>>> 81da47c57594eb2b7f02e0e199612070a76db040
 }

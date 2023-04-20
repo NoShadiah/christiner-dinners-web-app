@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import './signup.css';
-=======
 import {useEffect, useState} from "react";
-import "./signup.css";
->>>>>>> 81da47c57594eb2b7f02e0e199612070a76db040
-
-export function SignUpForm(props){
+// import APIService from "./posting";
+// Number 1
+export function UserRegister(props){
     const [firstname, setFirstName]=useState("");
     const [lastname, setLastName]=useState("");
     const [email, setEmail]=useState("");
@@ -75,100 +70,6 @@ export function SignUpForm(props){
         gender
     }
     
-<<<<<<< HEAD
-    <div className='section'>
-        <div className='containerform'>
-            <div>
-            <h1>Sign Up</h1>
-                    {hasSubmitted ? <p>{data}</p> : <p></p>}
-                    <form>
-                        <div>
-                        <label htmlFor="first-name">
-                                <b>First name:</b>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter Your First Name"
-                                name="first-name"
-                                required
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            ></input>
-                        </div> <br></br><br></br>
-                        <div>
-                            <label htmlFor="last-name">
-                                    <b>Last name:</b>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter Your Last Name"
-                                    name="last-name"
-                                    required
-                                    value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
-                                ></input>
-                        </div><br></br><br></br>
-                            <div>
-                                <label htmlFor="email">
-                                    <b>Email:</b>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter Your Email"
-                                    name="email"
-                                    required
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                ></input>
-                            </div><br></br><br></br>
-                            <div>
-                                <label htmlFor="contact">
-                                    <b>Contact:</b>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter Your Contact"
-                                    name="contact"
-                                    required
-                                    value={contact}
-                                    onChange={(e) => setContact(e.target.value)}
-                                ></input>
-                            </div> <br></br><br></br>
-                            <div>
-                                <label htmlFor="psw">
-                                    <b>Password:</b>
-                                </label>
-                                <input
-                                    type="password"
-                                    placeholder="Enter Password"
-                                    name="psw"
-                                    required
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                ></input>
-                            </div> <br></br><br></br>
-                            
-                            <div>
-                                <button type="submit" className="btn" onClick={onSubmitClick}>
-                                    Sign Up
-                                </button>
-                            </div><br></br><br></br>
-                            <div>
-                                <button type="button" className="btn-cancel" onClick={closeForm2}>
-                                    Close
-                                </button>
-                            </div>
-                            
-                    </form>
-                    
-            </div>
-            {/* <div>
-                There must be an image here
-            </div> */}
-                    
-      </div>
-      </div>
-=======
 
         fetch("http://localhost:5000/api/v2/users/register", {
         method: "POST", // or 'PUT'
@@ -198,15 +99,12 @@ export function SignUpForm(props){
         setPassword('')
         setGender('')
       }
->>>>>>> 81da47c57594eb2b7f02e0e199612070a76db040
     
     return(
         <div id='form1'>
-            <p>NAVZonline</p>
+            <h1>Enter User Details</h1>
             <form onSubmit={handleSubmit}>
-            
                 <div>
-                <h1>Trust and SignUp with NAVZs</h1>
                     <label>First name: </label>
                     <input 
                     type='text'
@@ -267,7 +165,7 @@ export function SignUpForm(props){
                 </div>
                 <div>
                     <button >Submit</button>
-                    <p>Submit form the form and hit the Signup button to access your account</p>
+                    <p>Submit form the form and hit the save button to Save the user</p>
                 </div>
             </form>
 
