@@ -7,6 +7,7 @@ import image3 from "../../../assets/cake.jpg";
 import image4 from "../../../assets/coffee.jpg";
 import image5 from "../../../assets/pizza.jpeg";
 import image6 from "../../../assets/coffee.jpg";
+import { Link } from "react-router-dom";
 
 const menuDataLeft = [
   {
@@ -96,7 +97,7 @@ const AddToCart = () => {
 
             <div className="addtocart-btn">
                 <h1 className="heading-secondary">
-                    <span> <button>LogIn/Signup</button></span> 
+                    <Link to="Login"> <button>LogIn/Signup</button></Link>
                 </h1>
 
                 

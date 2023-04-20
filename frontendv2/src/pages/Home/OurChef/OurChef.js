@@ -1,78 +1,34 @@
-import React from 'react'
-import './OurChef.css'
+import React from "react";
+import "./OurChef.css";
 
 const OurChef = () => {
   return (
     <div>
-        <div className='chef-img'>
-            <div className='container'>
-                <div className='chef-content'>
-                    <h1 className='heading-primary'>
-                        our <span>chef</span>
-                    </h1>
-
-                    <p className='text-white'>
-                    Award winning meals, delivered by an amazing team
-                    </p>
-                </div>
-            </div>
+      <div className="main">
+        <div className="content">
+          <h1>A Word From Our Chef</h1>
+          <p>
+            At Navz we offer an all-round culinary experience with dishes
+            that may tingle the taste buds of a young and mature audience, those
+            who prefer savory dishes and those with a sweet tooth. We indulge
+            your appetite for fresh, quality meals made with passion, expertise
+            and an eye for detail. Our a la carte menu also offers seasonal
+            specials and we cater for vegetarian and vegan options too. We look
+            forward to hosting you for breakfast, your business lunch and wind
+            down dinners, for drinks or a cake and coffee break, Navz
+            awaits you.
+          </p>
         </div>
-
-        {/* chef info  */}
-
-        <div className='container'>
-            <div className='grid-container py-md'>
-                <div className='grid-item chef-info'>
-                    <h3 className='heading-tertiary'>
-                        Marcus <span>Cole</span>
-                    </h3>
-
-                    <h4>grill chef</h4>
-
-                    <p>Aenean commodo ligula eget dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-                </div>
-
-                <div className='grid-item chef-info'>
-                    <h3 className='heading-tertiary'>
-                        Lisa <span>Cole</span>
-                    </h3>
-
-                    <h4>executive chef</h4>
-
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                </div>
-
-
-
-                <div className='grid-item chef-info'>
-                    <h3 className='heading-tertiary'>
-                        Lara <span>Langford</span>
-                    </h3>
-
-                    <h4>CHEF DE CUISINE</h4>
-
-                    <p>Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris.</p>
-                </div>
-
-
-
-                <div className='grid-item chef-info'>
-                    <h3 className='heading-tertiary'>
-                        Alex <span>Deer</span>
-                    </h3>
-
-                    <h4>sous chef</h4>
-
-                    <p>Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>
-                </div>
-            </div>
-
-
-
-
+        <div className="img">
+          <img
+            src="chef.jpeg"
+            alt="chef"
+            style={{ width: "100%", height: "100%",marginRight:"10%" }}
+          />
         </div>
-    </div>
-  )
-}
+      </div> <br></br>
+    </div> 
+  );
+};
 
-export default OurChef
+export default OurChef;

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './Hero.css'
+import { Link, Outlet } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -15,7 +16,9 @@ const Hero = () => {
             <p className='text-white'>
                 Book, Order online or call <span className='special-word'>070-123-4567</span>
             </p>
+       <Link to="menu"><button>ORDER NOW</button></Link>
         </div>
+        <Outlet/>
     </div>
   )
 }

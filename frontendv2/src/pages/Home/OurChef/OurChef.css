@@ -21,3 +21,17 @@
 .chef-info p {
     padding-top: 10px;
 }
+
+.main{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+/* .img{
+    width: 60%;
+    height: 70%;
+} */
+.content{
+    margin-left: 10%;
+    font-size: large;
+}

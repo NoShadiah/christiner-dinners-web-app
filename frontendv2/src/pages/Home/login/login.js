@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function LoginForm(props) {
 
     function closeForm() {
@@ -35,7 +37,10 @@ export function LoginForm(props) {
                     </div>
                 </form>
 
-                <button onClick={closeForm}>Login</button>
+                <button onClick={closeForm}>Login</button> <br></br><br></br>
+                <hr></hr> <br></br>
+                <p>New Customer?</p>
+                <Link to="/signup"><button>CREATE ACCOUNT</button></Link>
             </div>
         </div>
     </div>

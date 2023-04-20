@@ -1,0 +1,11 @@
+input{
+    height: 25px;
+  width: 250px; ;
+}
+.containerform{
+    border-width:100px ;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

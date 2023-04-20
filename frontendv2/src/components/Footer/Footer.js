@@ -10,17 +10,18 @@ const Footer = () => {
           <div className="footer-grid-item">
             <h3>Kamwokya</h3>
             <p>Bukoto street plot 19</p>
-            <p>Wakiso Uganda</p>
+            <p>Kampala Uganda</p>
             <p>0701 389 976/ 0771 389 976</p>
             <Link to="#" className="text-white">
               bukoto@navzs-restaurant.com
             </Link>
+        
           </div>
 
           <div className="footer-grid-item">
             <h3>Kololo</h3>
             <p>Opposite Kololo SS</p>
-            <p>Wakiso Uganda</p>
+            <p>kampala Uganda</p>
             <p>0708 774 433</p>
             <Link to="#" className="text-white">
               kololo@navzs-restaurant.com
@@ -30,7 +31,7 @@ const Footer = () => {
           <div className="footer-grid-item">
             <h3>Lugogo</h3>
             <p>Shoprite</p>
-            <p>Wakiso Uganda</p>
+            <p>Kampala Uganda</p>
             <p>0778 345 888</p>
             <Link to="#" className="text-white">
               lugogo@navzs-restaurant.com

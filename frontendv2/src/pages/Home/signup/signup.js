@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './signup.css';
 
 export function SignUpForm() {
   const [firstName, setFirstName] = useState("");
@@ -48,14 +49,14 @@ export function SignUpForm() {
   return (
     
     <div className='section'>
-        <div className='container grid-container contact-content'>
+        <div className='containerform'>
             <div>
             <h1>Sign Up</h1>
                     {hasSubmitted ? <p>{data}</p> : <p></p>}
                     <form>
                         <div>
                         <label htmlFor="first-name">
-                                <b>First name</b>
+                                <b>First name:</b>
                             </label>
                             <input
                                 type="text"
@@ -65,10 +66,10 @@ export function SignUpForm() {
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                             ></input>
-                        </div>
+                        </div> <br></br><br></br>
                         <div>
                             <label htmlFor="last-name">
-                                    <b>Last name</b>
+                                    <b>Last name:</b>
                                 </label>
                                 <input
                                     type="text"
@@ -78,10 +79,10 @@ export function SignUpForm() {
                                     value={lastName}
                                     onChange={(e) => setLastName(e.target.value)}
                                 ></input>
-                        </div>
+                        </div><br></br><br></br>
                             <div>
                                 <label htmlFor="email">
-                                    <b>Email</b>
+                                    <b>Email:</b>
                                 </label>
                                 <input
                                     type="text"
@@ -91,10 +92,10 @@ export function SignUpForm() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 ></input>
-                            </div>
+                            </div><br></br><br></br>
                             <div>
                                 <label htmlFor="contact">
-                                    <b>Contact</b>
+                                    <b>Contact:</b>
                                 </label>
                                 <input
                                     type="text"
@@ -104,10 +105,10 @@ export function SignUpForm() {
                                     value={contact}
                                     onChange={(e) => setContact(e.target.value)}
                                 ></input>
-                            </div>
+                            </div> <br></br><br></br>
                             <div>
                                 <label htmlFor="psw">
-                                    <b>Password</b>
+                                    <b>Password:</b>
                                 </label>
                                 <input
                                     type="password"
@@ -117,13 +118,13 @@ export function SignUpForm() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 ></input>
-                            </div>
+                            </div> <br></br><br></br>
                             
                             <div>
                                 <button type="submit" className="btn" onClick={onSubmitClick}>
                                     Sign Up
                                 </button>
-                            </div><br></br>
+                            </div><br></br><br></br>
                             <div>
                                 <button type="button" className="btn-cancel" onClick={closeForm2}>
                                     Close
@@ -133,9 +134,9 @@ export function SignUpForm() {
                     </form>
                     
             </div>
-            <div>
+            {/* <div>
                 There must be an image here
-            </div>
+            </div> */}
                     
       </div>
       </div>

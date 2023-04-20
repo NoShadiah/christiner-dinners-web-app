@@ -44,11 +44,15 @@ const Navbar = () => {
                 Menu
               </NavLink>
             </li>
+            <div className="dropdown">
             <li onClick={handleClick}>
               <NavLink className="nav-link" to="/delivery">
                 My Account 
+               {/* <link to="">My Profile</link>
+              <link to="">My Orders</link> */}
               </NavLink>
             </li>
+            </div>
             <li onClick={handleClick}>
               <NavLink className="nav-link" to="/about">
                 About
